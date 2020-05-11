@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {Table} from 'react-bootstrap'
+import {Table} from 'react-bootstrap';
+
 class CoinListTable extends Component {
-    state = {  }
     render() { 
+      console.log(this.props.websocket,"child")
         return ( 
-            <div className="coinListTable" style={{margin:"0 100px"}}>
+            <div className="coinListTable">
         <Table responsive>
   <thead>
     <tr>
