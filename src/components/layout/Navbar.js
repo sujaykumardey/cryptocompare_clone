@@ -76,7 +76,6 @@ export default class Navbar extends Component {
             </div>
           </div>
         </nav>
-        
 
         <div
           className="modal fade rounded"
