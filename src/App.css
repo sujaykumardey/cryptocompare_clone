@@ -1,5 +1,5 @@
-.coinListTable{
-  margin:100px,
+:root{
+    --header-background-clr:blue;
 }
 .App {
     text-align: center;
@@ -26,11 +26,31 @@
     font-size: calc(10px + 2vmin);
     color: white;
   }
-  
+  .coinListTable{
+    /* margin:0 100px; */
+    background-color: #b4bac7;
+  }
+  .homepage-container{
+    margin: 60px;
+  }
+  .coinTable-header{
+    display: flex;
+    /* justify-content: space-around; */
+  }
+  .coinTable-header-button{
+    padding:9px;
+    width: 33.3%;
+    text-align: center;
+  }
+  .header{
+      background-color:var(--header-background-clr);
+      padding:16px}
   .App-link {
     color: #61dafb;
   }
-  
+  .card{
+    background-color:wheat;
+  }
   @keyframes App-logo-spin {
     from {
       transform: rotate(0deg);

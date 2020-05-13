@@ -8,7 +8,6 @@ class CoinListCards extends Component {
                 }
     }
     componentDidMount(){
-         
         this.connect();
         console.log(this.connect,"connect return")
         }
@@ -65,16 +64,16 @@ class CoinListCards extends Component {
                 if (!ws || ws.readyState === WebSocket.CLOSED) this.connect(); //check if websocket instance is closed, if so call `connect` function.
             };
     render() { 
-        console.log(this.state.data.sym,"data value")
+        console.log(this.state.data,"data value")
         return ( 
             <div style={{display:"flex"}}>
-            <div style={{width:"300px",height:200,backgroundColor:"grey",margin:"10px 30px"}}>
+            <div className="card"style={{width:"300px",height:200}}>
                  <div className="card-header">
                  {this.state.data.sym!==undefined&&this.state.data.sym}-USD
                  <span className="vol">Vol:{this.state.data.vol!==undefined&&this.state.data.vol}</span>
                  </div>
                  <div>
-                 $ {this.state.data.price} 
+                    $ {this.state.data.price} 
                  </div>
                  <div className="graph-section">graph</div>
                  <footer>
@@ -84,9 +83,17 @@ class CoinListCards extends Component {
                  </footer>
                 {/* {this.state.dat} */}
             </div>
-            <div style={{width:300,height:200,backgroundColor:"grey",margin:10}}>
+            <div className="card" style={{width:300,height:200,margin:"0 15px"}}>
                 {/* {this.state.ws} */}
                 ETH-USD
+            </div>
+            <div className="card" style={{width:300,height:200,margin:"0 15px"}}>
+                {/* {this.state.ws} */}
+                LTC-USD
+            </div>
+            <div className="card" style={{width:300,height:200}}>
+                {/* {this.state.ws} */}
+                XRP-USD
             </div>
             
             </div>
