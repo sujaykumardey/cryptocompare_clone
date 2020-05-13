@@ -1,0 +1,19 @@
+.modal-body{
+    background-color: #0b1738;
+}
+
+.text{
+    color:rgb(18, 247, 18);
+    font-weight: 900;
+}
+
+.prefix{
+    color: honeydew;
+    margin-right: 5px;
+}
+
+
+.btn-outline-info{
+    font-size: 20px;
+    border: none;
+}
