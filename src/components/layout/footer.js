@@ -27,13 +27,13 @@ export default class Footer extends Component {
                     <li role="presentation" className="footer-text">
                       <a href="/about-us/timeline/">Our Timeline</a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" className="footer-text">
                       <a href="/privacy-policy/">Privacy policy</a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" className="footer-text">
                       <a href="/terms-conditions/">Terms &amp; Conditions</a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" className="footer-text">
                       <a href="/website-disclaimer/">Website disclaimer</a>
                     </li>
                   </ul>
@@ -43,16 +43,16 @@ export default class Footer extends Component {
               <div className="col-md-2 col-sm-3 col-xs-6 col-footer panel-min-height">
                 <div className="nav-panel">
                   <div className="nav-header-all">
-                    <h4>Marketing</h4>
+                    <h4 >Marketing</h4>
                   </div>
                   <ul className="nav nav-pills">
-                    <li role="presentation">
-                      <a href="https://www.cryptocompare.com/media/35280519/cc-public-guidelines.pdf">
+                    <li role="presentation" className="footer-text">
+                      <a className="footer-text" href="https://www.cryptocompare.com/media/35280519/cc-public-guidelines.pdf">
                         Branding guidelines
                       </a>
                     </li>
-                    <li role="presentation">
-                      <a href="/advertise/">Advertise with us</a>
+                    <li role="presentation" className="footer-text">
+                      <a href="/advertise/" >Advertise with us</a>
                     </li>
                     <li role="presentation" className="footer-text">
                       <a href="/email-updates/daily/2020/may/13/">
@@ -79,36 +79,38 @@ export default class Footer extends Component {
                   <div className="nav-header-all">
                     <h4>Developers</h4>
                   </div>
-                  <ul className="nav nav-pills">
-                    <li role="presentation">
-                      <a href="/dev/widget/wizard/">
+                  <ul className="nav nav-pills footer-text">
+                    <li role="presentation" className="footer-text">
+                      <a href="/dev/widget/wizard/" className="footer-text">
                         <i className="fa fa-space-shuttle"></i> Widgets
                       </a>
                     </li>
-                    <li role="presentation">
-                      <a href="https://min-api.cryptocompare.com">
+                    <li role="presentation" className="footer-text">
+                      <a href="https://min-api.cryptocompare.com" className="footer-text">
                         <i className="fa fa-code"></i> API
                       </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" className="footer-text">
                       <a
                         href="#1"
                         ng-click="switchLights()"
-                        className="ng-binding"
+                        className="ng-binding footer-text"
                       >
                         <i className="fa fa-lightbulb-o"></i> Turn Lights Off
                       </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" className="footer-text">
                       <a
+                      className="footer-text"
                         target="#1"
                         href="https://www.cryptocompare.com/full-screen/conference?fsyms=BTC,ETH,BCH&amp;tsym=USD&amp;eventLogo=https://www.cryptocompare.com/media/30001628/your-logo.png"
                       >
                         <i className="fa fa-desktop"></i> Conference Screen
                       </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" className="footer-text">
                       <a
+                      className="footer-text"
                         target="#1"
                         href="https://www.cryptocompare.com/media/25792605/topcoinsticker-v3.html"
                       >
@@ -187,28 +189,28 @@ export default class Footer extends Component {
                 <ul className="soc d-flex justify-content-around">
                   <li>
                     <a
-                      className="fa fa-twitter"
+                      className="fa fa-twitter icon-footer"
                       href="https://twitter.com/CryptoCompare"
                       target="#1"
                     ></a>
                   </li>
                   <li>
                     <a
-                      className="fa fa-facebook"
+                      className="fa fa-facebook icon-footer"
                       href="https://www.facebook.com/cryptocompare"
                       target="#1"
                     ></a>
                   </li>
                   <li>
                     <a
-                      className="fa fa-medium"
+                      className="fa fa-medium icon-footer"
                       href="https://blog.cryptocompare.com/"
                       target="_blank"
                     ></a>
                   </li>
                 </ul>
                 <div className="nav-panel clearfix">
-                  <ul className="nav nav-pills nav-centered nav-made">
+                  <ul className="nav nav-pills nav-centered nav-made d-flex justify-content-center">
                     <li role="presentation">
                       <a href="https://www.cryptocompare.com/media/35280519/cc-public-guidelines.pdf">
                         © 2020 Crypto Coin Comparison Ltd
