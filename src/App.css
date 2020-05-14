@@ -1,0 +1,23 @@
+.coin-details-container{
+    padding: 2em;
+}
+
+
+.price-change-caret{
+    position: relative;
+    bottom: 1em;
+}
+
+.coin-market-border{
+    border: rgb(68, 66, 70) 1px solid;
+    border-radius: 2px;
+    text-align: center;
+    font-weight: bold;
+    font-size: .8em;
+}
+
+.tooltip-inner {
+        min-width: 100px;
+        max-width: 100%; 
+    }
+

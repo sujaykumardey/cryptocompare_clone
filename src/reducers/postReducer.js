@@ -1,4 +1,6 @@
 import { } from '../actions/types';
+import * as actions from '../actions/types'
+
 
 const initialState = {
  
@@ -12,3 +14,4 @@ export default function (state = initialState, action) {
       return state;
   }
 }
+

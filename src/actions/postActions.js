@@ -1,16 +1,19 @@
-import {} from './types';
-import {} from '../assets/credentials';
+// import * as actions from './types'
 
-export const fetchPosts = () => (dispatch) => {
-  // getUser().then((user) => {
-  //   const boards = post.map((user) => {
-  //     return {
-  //       //return here user
-  //     };
-  //   });
-  //   dispatch({
-  //     type: FETCH_POSTS,
-  //     payload: user,
-  //   });
-  // });
-};
+
+
+// export const fetchHistoricalDayData = () => (dispatch) => {
+//     let url = `https://api.trello.com/1/members/me/boards?key=${key}&token=${token}`
+//     fetch(url)
+//       .then(response => response.json())
+//       .then(boards => {
+//         dispatch({
+//             type:actions.FETCH_BOARDS,
+//             payload: boards
+//         })
+//       })
+//       .catch( e => console.log("Error in fetching boards"))
+    
+// }
+
+// // 
