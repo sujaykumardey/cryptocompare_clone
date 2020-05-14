@@ -1,6 +1,6 @@
 .footer{
     font-size: 14px;    
-    background-color: black;
+    background-color: rgb(27, 24, 24);
 }
 
 .nav-header-all{
@@ -20,4 +20,17 @@ h4{
 
 a{
     color:white;
+}
+
+.icon-footer{
+    font-size: 25px;
+    
+    padding:10px 10px 10px 10px;
+    background-color: black;
+    border:0.02px solid rgb(56, 9, 224);
+}
+
+li{
+    list-style-type: none;
+    margin-bottom: 5px;
 }
