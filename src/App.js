@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import Navbar from './components/layout/Navbar'
-import Footer from './components/layout/footer'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './components/layout/Home'
 import Portfolio from './components/layout/Portfolio'
+import Portfoliosignin from './components/layout/Portfoliosignin';
 
 export default class App extends Component {
   render() {
     return (
       <>
-      {/* <Navbar />
-      <div> TEAM DENVER </div>
-      <Footer/>
-    </>
-      <Footer /> */}
-      <Portfolio />
+     
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/portfolio" component={Portfolio} />
+              <Route exact path="/portfolioauth" component={Portfoliosignin} />
+            </Switch>
+          </Router>
+    
       </>
     );
   }

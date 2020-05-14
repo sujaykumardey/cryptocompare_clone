@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import './modal.css';
 
 export default class Navbar extends Component {
@@ -35,11 +37,14 @@ export default class Navbar extends Component {
             </button>
             <div className="collapse navbar-collapse" id="exCollapsingNavbar">
               <ul className="nav navbar-nav">
+              <Link to="/">
                 <li className="nav-item">
+                  
                   <a href="#!" className="nav-link">
                     Markets
                   </a>
                 </li>
+                </Link>
                 <li className="nav-item">
                   <a href="#!" className="nav-link">
                     Data
@@ -57,11 +62,15 @@ export default class Navbar extends Component {
                 </li>
               </ul>
               <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
+              <Link to="/portfolio">
                 <li className="btn btn-default nav-item">
+               
                   <a href="#!" className="nav-link">
                     Portfolio{' '}
                   </a>
+                
                 </li>
+                </Link>
                 <li
                   className="btn btn-default nav-item"
                   onClick={(e) => this.handleModal(e)}
@@ -92,6 +101,7 @@ export default class Navbar extends Component {
                   className="nav nav-tabs bg-success md-tabs tabs-2 light-blue darken-3"
                   role="tablist"
                 >
+                  
                   <li className="nav-item">
                     <a
                       className="nav-link active"
@@ -103,6 +113,7 @@ export default class Navbar extends Component {
                       Login
                     </a>
                   </li>
+                
                   <li className="nav-item">
                     <a
                       className="nav-link"
@@ -163,10 +174,11 @@ export default class Navbar extends Component {
                           class="form-control form-control-sm validate"
                         />
                       </div>
+
                       <div class="text-center mt-2">
-                        <button class="btn btn-success btn-block">
+                        <Link to="/portfolioauth" class="btn btn-success btn-block">
                           Log in <i class="fas fa-sign-in ml-1"></i>
-                        </button>
+                        </Link>
                       </div>
                     </div>
 

@@ -27,13 +27,13 @@ export default class Footer extends Component {
                     <li role="presentation" className="footer-text">
                       <a href="/about-us/timeline/">Our Timeline</a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" className="footer-text">
                       <a href="/privacy-policy/">Privacy policy</a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" className="footer-text">
                       <a href="/terms-conditions/">Terms &amp; Conditions</a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" className="footer-text">
                       <a href="/website-disclaimer/">Website disclaimer</a>
                     </li>
                   </ul>
@@ -46,12 +46,15 @@ export default class Footer extends Component {
                     <h4>Marketing</h4>
                   </div>
                   <ul className="nav nav-pills">
-                    <li role="presentation">
-                      <a href="https://www.cryptocompare.com/media/35280519/cc-public-guidelines.pdf">
+                    <li role="presentation" className="footer-text">
+                      <a
+                        className="footer-text"
+                        href="https://www.cryptocompare.com/media/35280519/cc-public-guidelines.pdf"
+                      >
                         Branding guidelines
                       </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" className="footer-text">
                       <a href="/advertise/">Advertise with us</a>
                     </li>
                     <li role="presentation" className="footer-text">
@@ -79,36 +82,41 @@ export default class Footer extends Component {
                   <div className="nav-header-all">
                     <h4>Developers</h4>
                   </div>
-                  <ul className="nav nav-pills">
-                    <li role="presentation">
-                      <a href="/dev/widget/wizard/">
+                  <ul className="nav nav-pills footer-text">
+                    <li role="presentation" className="footer-text">
+                      <a href="/dev/widget/wizard/" className="footer-text">
                         <i className="fa fa-space-shuttle"></i> Widgets
                       </a>
                     </li>
-                    <li role="presentation">
-                      <a href="https://min-api.cryptocompare.com">
+                    <li role="presentation" className="footer-text">
+                      <a
+                        href="https://min-api.cryptocompare.com"
+                        className="footer-text"
+                      >
                         <i className="fa fa-code"></i> API
                       </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" className="footer-text">
                       <a
                         href="#1"
                         ng-click="switchLights()"
-                        className="ng-binding"
+                        className="ng-binding footer-text"
                       >
                         <i className="fa fa-lightbulb-o"></i> Turn Lights Off
                       </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" className="footer-text">
                       <a
+                        className="footer-text"
                         target="#1"
                         href="https://www.cryptocompare.com/full-screen/conference?fsyms=BTC,ETH,BCH&amp;tsym=USD&amp;eventLogo=https://www.cryptocompare.com/media/30001628/your-logo.png"
                       >
                         <i className="fa fa-desktop"></i> Conference Screen
                       </a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" className="footer-text">
                       <a
+                        className="footer-text"
                         target="#1"
                         href="https://www.cryptocompare.com/media/25792605/topcoinsticker-v3.html"
                       >
@@ -216,7 +224,7 @@ export default class Footer extends Component {
                     </li>
                     <li role="presentation">
                       <a href="/about-us/">
-                        Made with <i className="fa fa-heart love"></i> in London
+                        Made by <i className="fa fa-heart love"></i> TEAM DENVER
                       </a>
                     </li>
                   </ul>
