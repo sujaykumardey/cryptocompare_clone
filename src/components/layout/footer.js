@@ -43,16 +43,19 @@ export default class Footer extends Component {
               <div className="col-md-2 col-sm-3 col-xs-6 col-footer panel-min-height">
                 <div className="nav-panel">
                   <div className="nav-header-all">
-                    <h4 >Marketing</h4>
+                    <h4>Marketing</h4>
                   </div>
                   <ul className="nav nav-pills">
                     <li role="presentation" className="footer-text">
-                      <a className="footer-text" href="https://www.cryptocompare.com/media/35280519/cc-public-guidelines.pdf">
+                      <a
+                        className="footer-text"
+                        href="https://www.cryptocompare.com/media/35280519/cc-public-guidelines.pdf"
+                      >
                         Branding guidelines
                       </a>
                     </li>
                     <li role="presentation" className="footer-text">
-                      <a href="/advertise/" >Advertise with us</a>
+                      <a href="/advertise/">Advertise with us</a>
                     </li>
                     <li role="presentation" className="footer-text">
                       <a href="/email-updates/daily/2020/may/13/">
@@ -86,7 +89,10 @@ export default class Footer extends Component {
                       </a>
                     </li>
                     <li role="presentation" className="footer-text">
-                      <a href="https://min-api.cryptocompare.com" className="footer-text">
+                      <a
+                        href="https://min-api.cryptocompare.com"
+                        className="footer-text"
+                      >
                         <i className="fa fa-code"></i> API
                       </a>
                     </li>
@@ -101,7 +107,7 @@ export default class Footer extends Component {
                     </li>
                     <li role="presentation" className="footer-text">
                       <a
-                      className="footer-text"
+                        className="footer-text"
                         target="#1"
                         href="https://www.cryptocompare.com/full-screen/conference?fsyms=BTC,ETH,BCH&amp;tsym=USD&amp;eventLogo=https://www.cryptocompare.com/media/30001628/your-logo.png"
                       >
@@ -110,7 +116,7 @@ export default class Footer extends Component {
                     </li>
                     <li role="presentation" className="footer-text">
                       <a
-                      className="footer-text"
+                        className="footer-text"
                         target="#1"
                         href="https://www.cryptocompare.com/media/25792605/topcoinsticker-v3.html"
                       >
@@ -218,7 +224,7 @@ export default class Footer extends Component {
                     </li>
                     <li role="presentation">
                       <a href="/about-us/">
-                        Made with <i className="fa fa-heart love"></i> in London
+                        Made by <i className="fa fa-heart love"></i> TEAM DENVER
                       </a>
                     </li>
                   </ul>
