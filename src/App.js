@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
-import HomePage from './screen/Homepage'
+import Homepage from './screen/Homepage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router,Switch, Route } from "react-router-dom";
 import store from "./store"
 import {Provider} from "react-redux"
 import Header from "./components/Header"
 import "./App.css"
+import Footer from './components/Footer'
+import CoinlistScreen from './screen/CoinlistScreen';
 export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div>
+        <div className="cointainer">
+        <Router>
           <Header />
-          <Router>
           <Switch>
-            <Route exact path="/" component={HomePage} />
+            <Route exact path="/" component={Homepage} />
+            <Route path="/coins/list/USD/1" component={CoinlistScreen}/>
           </Switch>
           </Router>
+          <Footer/>
         </div>
       </Provider>
     );

@@ -1,2 +1,5 @@
 export const FETCH_CRYPTO= 'FETCH_CRYPTO';
+export const FETCH_ALLCRYPTO= 'FETCH_ALLCRYPTO';
+
+
 

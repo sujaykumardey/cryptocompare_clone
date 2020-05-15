@@ -1,5 +1,7 @@
 :root{
-    --header-background-clr:blue;
+    --header-background-clr:rgb(1, 1, 34);
+    --card-table-background-clr:#fff;
+    --background-clr:rgb(226, 222, 222);
 }
 .App {
     text-align: center;
@@ -26,30 +28,95 @@
     font-size: calc(10px + 2vmin);
     color: white;
   }
-  .coinListTable{
-    /* margin:0 100px; */
-    background-color: #b4bac7;
+  .cointainer{
+    background-color:var(--background-clr);
   }
   .homepage-container{
     margin: 60px;
   }
+  .crpto-tpye-nav-bar{
+    list-style: none;
+  }
+  .allcoins-list-table{
+    background-color: var(--card-table-background-clr);
+  }
+  .coin-list-table{
+    background-color:var(--card-table-background-clr)
+  }
   .coinTable-header{
     display: flex;
     /* justify-content: space-around; */
+    
   }
-  .coinTable-header-button{
+  .coinTable-header{
+    background-color: var(--background-clr);
+  }
+  .coinTable-header-nav{
     padding:9px;
     width: 33.3%;
     text-align: center;
+   border-top-left-radius: .4rem;
+   border-top-right-radius:0.4rem ;
   }
-  .header{
+  .coinlist-table-footer{
+    background-color: #f3f8ff;
+    padding: 5px;
+  }
+  .view-all-coins-btn{
+    margin:8px 38%;
+    padding: 5px 30px;
+    background-color: #FFFFFF;
+    border: 1px solid #ececec;
+    color: #363D47;
+  }
+    .header-nav-bar{
       background-color:var(--header-background-clr);
-      padding:16px}
+      padding:14px;
+      display: flex;
+    }
+    .nav-list{
+      color: white;
+      list-style: none;
+      margin: 5px;
+    }
+  .footer{
+    background-color: var(--header-background-clr);
+    margin-top: 100%;
+    height: 35vh;
+
+  }
   .App-link {
     color: #61dafb;
   }
+  
+  .card-container{
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    height:180px;
+    justify-content: space-between;
+  }
   .card{
-    background-color:wheat;
+    /* font-size: small; */
+    /* margin: 2px; */
+    width: 24%;
+    background-color:var(--card-table-background-clr);
+  
+  }
+  .card-header1{
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .card-footer{
+    background-color: rgb(29,139,58);
+    margin-top: auto;
+    list-style: none;
+    margin-bottom: 0;
+    padding: 8px;
+    display: flex;
+    color: #fff;
+    font-size: 14px;
+    justify-content: space-between;
   }
   @keyframes App-logo-spin {
     from {

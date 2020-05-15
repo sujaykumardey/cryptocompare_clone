@@ -3,8 +3,7 @@ class CoinListCards extends Component {
     constructor(){
         super()
       this.state={ws:null,
-                  data:{},
-                  bt:"btc"
+                  data:[]
                 }
     }
     componentDidMount(){
@@ -24,7 +23,7 @@ class CoinListCards extends Component {
                 this.setState({ ws: ws });
                 var subRequest = {
                     "action": "SubAdd",
-                    "subs": ["5~CCCAGG~BTC~USD"]
+                    "subs": ["5~CCCAGG~BTC~USD","24~CCCAGG~BTC~USD~H","5~CCCAGG~ETH~USD","24~CCCAGG~ETH~USD~H","5~CCCAGG~LTC~USD","24~CCCAGG~LTC~USD~H","5~CCCAGG~XRP~USD","24~CCCAGG~XRP~USD~H"]
                 };
                 ws.send(JSON.stringify(subRequest));
                 that.timeout = 250; // reset timer to 250 on open of websocket connection
@@ -43,10 +42,32 @@ class CoinListCards extends Component {
             ws.onmessage = (event) => {
                 // console.log(event)
                 const message = JSON.parse(event.data)
-                console.log(message)
+                console.log(message,"cards data")
                 let volume24hour=message.VOLUME24HOUR
-                var data ={ vol:volume24hour,sym:message.FROMSYMBOL,tosym:message.TOSYMBOL,price:message.PRICE,lastMarket:message.LASTMARKET,lastVol:message.LASTVOLUME}
-                this.setState({data:data})
+                let coinExist=false;
+                const prevData=this.state.data.map(coin=>{
+                    console.log(coin)
+                    if(message.TYPE==="5"&&coin.sym===message.FROMSYMBOL){
+                    if(message.PRICE!==undefined)
+                    {coin.price=message.PRICE;
+                        console.log(coin.price,message.FROMSYMBOL,"inside price")}
+                    else if(message.LASTMARKET!==undefined)
+                         coin.lastMarket=message.LASTMARKET
+                    else if(message.LASTVOLUME!==undefined)
+                         coin.lastVol=message.LASTVOLUME
+                    else if(message.VOLUME24HOURTO!==undefined)
+                         coin.vol=message.VOLUME24HOURTO
+                         coinExist=true;
+                        }
+                    return coin
+                 })  
+                 if(!coinExist&&message.TYPE==="5"&&message.FROMSYMBOL!==undefined)
+                  {  
+                    const data ={ vol:volume24hour,sym:message.FROMSYMBOL,tosym:message.TOSYMBOL,price:message.PRICE,lastMarket:message.LASTMARKET,lastVol:message.LASTVOLUME}
+                    console.log(data,"push data")     
+                    prevData.push(data)
+                  }
+                    this.setState({data:prevData})
                 console.log("Received from Cryptocompare: " + message.FROMSYMBOL,message.TOSYMBOL,volume24hour,message.LASTMARKET,message.LASTVOLUME);         
             // websocket onerror event listener
             }
@@ -66,36 +87,24 @@ class CoinListCards extends Component {
     render() { 
         console.log(this.state.data,"data value")
         return ( 
-            <div style={{display:"flex"}}>
-            <div className="card"style={{width:"300px",height:200}}>
-                 <div className="card-header">
-                 {this.state.data.sym!==undefined&&this.state.data.sym}-USD
-                 <span className="vol">Vol:{this.state.data.vol!==undefined&&this.state.data.vol}</span>
+            <div className="card-container">
+               {this.state.data.map(coin=><div className="card">
+                 <div className="card-header1 m-1">
+                 {coin.sym}-{coin.tosym}
+                 <span className="vol" style={{fontSize:11,paddingLeft:"70px",fontWeight:"none"}}>Vol:{coin.vol}</span>
                  </div>
-                 <div>
-                    $ {this.state.data.price} 
+                 <div className="card-price m-1">
+                    $ {coin.price} 
                  </div>
                  <div className="graph-section">graph</div>
-                 <footer>
-                    just now
-                  <span>{this.state.data.lastMarket!==undefined&&this.state.data.lastMarket}</span>
-                  <span>{this.state.data.lastVol!==undefined&&this.state.data.lastVol}</span>
-                 </footer>
+                 <ul className="card-footer">
+                   <li>just now</li>
+                   <li>{coin.lastMarket}</li>
+                   <li>{coin.lastVol}</li>
+                 </ul>
                 {/* {this.state.dat} */}
             </div>
-            <div className="card" style={{width:300,height:200,margin:"0 15px"}}>
-                {/* {this.state.ws} */}
-                ETH-USD
-            </div>
-            <div className="card" style={{width:300,height:200,margin:"0 15px"}}>
-                {/* {this.state.ws} */}
-                LTC-USD
-            </div>
-            <div className="card" style={{width:300,height:200}}>
-                {/* {this.state.ws} */}
-                XRP-USD
-            </div>
-            
+               )}
             </div>
             
           );

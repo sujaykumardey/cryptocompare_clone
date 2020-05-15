@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
-import CoinListCards from './CoinListCards'
-import CoinListTable from './CoinListTable'
+import CoinListTable from '../components/CoinListTable'
 import propsType from 'prop-types'
-import {fetchTopTenCrypto} from "../actions/coinsActions"
+import {fetchAllCrypto} from "../actions/coinsActions"
+import { subReq} from "../components/CoinsSubs"
 import {connect} from "react-redux"
-import{Link} from "react-router-dom"
-class CoinList extends Component {
+class AllCoinsList extends Component {
     constructor(){
         super()
-        this.state={
-            data:[],
-            showAllCoins:false,
-            apiKey:"39384a547eab1c6790c330f4c0ab9403cb9f98c2c5ab3b5ac5b47fe4d6f54dc1",
-            bgColor:"",
-            borderClr:""
-        }
+        this.state={data:[]}
     }
     componentDidMount(){
-        this.props.fetchTopTenCrypto()
+        this.props.fetchAllCrypto()
         this.connect();
         }
         timeout = 250; // Initial timeout duration as a class variable/**
@@ -31,21 +24,7 @@ class CoinList extends Component {
             ws.onopen = () => {
                 console.log("connected websocket main component");    
                this.setState({ ws: ws });
-                var subRequest = {
-                    "action":"SubAdd",
-                    "subs":["11~BTC","21~BTC","5~CCCAGG~BTC~USD",
-                           "11~ETH","21~ETH","5~CCCAGG~ETH~USD",
-                           "11~BCH","21~BCH","5~CCCAGG~BCH~USD",
-                           "11~BSV","21~BSV","5~CCCAGG~BSV~USD",
-                           "11~XRP","21~XRP","5~CCCAGG~XRP~USD",
-                           "11~EOS","21~EOS","5~CCCAGG~EOS~USD",
-                           "11~LTC","21~LTC","5~CCCAGG~LTC~USD",
-                           "11~ETC","21~ETC","5~CCCAGG~ETC~USD",
-                           "11~LINK","21~LINK","5~CCCAGG~LINK~USD",
-                           "11~TRX","21~TRX","5~CCCAGG~TRX~ETH",
-                           "5~CCCAGG~TRX~USD"]
-                } 
-                ws.send(JSON.stringify(subRequest));
+                ws.send(JSON.stringify(subReq));
                 that.timeout = 250; // reset timer to 250 on open of websocket connection
                 clearTimeout(connectInterval); // clear Interval on on open of websocket connection
             };    // websocket onclose event listener
@@ -100,45 +79,22 @@ class CoinList extends Component {
             };
       
     render() { 
-        console.log(this.props,"BTC DATA")
-    return(
-        <div className="coin-list">
-            <CoinListCards/>
-            {this.state.data.length===10&&
-            <div className="coin-list-table">
-              <div className="coinTable-header">
-               <div className="coinTable-header-nav "
-                 style={{ backgroundColor: this.state.bgColor,borderTop:this.state.borderClr }}
-                 onClick={() => this.setState({ bgColor: "white",borderClr:"3px solid #00d665"})}>COINS</div>
-                  <div className="coinTable-header-nav">FORUM</div>
-                  <div className="coinTable-header-nav ">NEWS</div>
-               </div>
-            <div className="feature-table m-2">
-               Featured The World's #1 Online Crypto Casino. Wager 5 Mbtc - Get 100 Free Spins
-            </div>
-            <CoinListTable data={this.state.data} />
-            <div className="coinlist-table-footer">
-            <Link to="/coins/list/USD/1">
-            <button className="view-all-coins-btn">
-                View All Coins <i className="fa fa-chevron-down"></i>
-            </button>
-            </Link>
-            </div>
-            </div>}
-        </div>
-         );
+        return ( 
+        <div className="allcoins-list-table">
+        <ul className="crpto-tpye-nav-bar">
+            <li>USD</li>
+        </ul>
+        <CoinListTable data={this.state.data}/>
+    </div>  );
     }
 }
-
-CoinList.propsType=({
-    fetchTopTenCrypto:propsType.func.isRequired,
+ 
+AllCoinsList.propsType=({
     fetchAllCrypto:propsType.func.isRequired,
-    topTenCrypt:propsType.array.isRequired,
     allCrypto:propsType.array.isRequired
  })
  const mapStatetoProps=state=>({
-     topTenCrypto:state.crypto.topTenCrypto,
      allCrypto:state.crypto.allCrypto
  })
  
- export default connect(mapStatetoProps,{fetchTopTenCrypto})(CoinList);
+ export default connect(mapStatetoProps,{fetchAllCrypto})(AllCoinsList);

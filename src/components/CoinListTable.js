@@ -34,7 +34,7 @@ class CoinListTable extends Component {
               {/* <th>Direct Vol</th> */}
               <th>Total Vol</th>
               <th>Top Tier Vol</th>
-              {/* <th>Mkt. Cap.</th> */}
+              <th>Mkt. Cap.</th>
             </tr>
           </thead>
           <tbody>
