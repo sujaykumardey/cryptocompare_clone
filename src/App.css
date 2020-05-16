@@ -1,23 +1,62 @@
-.coin-details-container{
-    padding: 2em;
+*{ 
+    border: #DEE9F5 solid 1px;
+    border-radius: 4px;
+}
+.coin-short-form{
+    background: #F9F9F9;
+    float: right
+}
+/* .ps-l{
+    float: left;  
+} */
+.coin-details-container {
+  padding: 2em;
 }
 
-
-.price-change-caret{
-    position: relative;
-    bottom: 1em;
+.price-change-caret {
+  position: relative;
+  bottom: 1em;
 }
 
-.coin-market-border{
-    border: rgb(68, 66, 70) 1px solid;
-    border-radius: 2px;
-    text-align: center;
-    font-weight: bold;
-    font-size: .8em;
+.coin-market-border {
+  border: rgb(68, 66, 70) 1px solid;
+  border-radius: 2px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.8em;
 }
 
 .tooltip-inner {
-        min-width: 100px;
-        max-width: 100%; 
-    }
+  min-width: 100px;
+  max-width: 100%;
+}
+.coin-follow{
+    background: #5cb85c;
+    position: relative;
+    /* padding: 4px; */
+}
+.btn-label {
+  position: absolute;
+  left: 0px;
+  top: -3px;
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px 0 0 3px;
+}
+.btn-labeled {
+  padding: 4px;
+}
+.add-to-portfolio{
+    background: #F79A35;
+    position: relative;
+    padding: 4px;
+}
+.currency-name{
+    font-size: 1.6em;
+}
 
+.border-gray{
+    border: #DEE9F5 solid 1px;
+    border-radius: 4px;
+}

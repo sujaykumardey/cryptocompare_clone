@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 const CoinMarketDetail = () => {
-    const tooltipTitleMktCap=`When calculating Market Capitalization (market cap), we account for all coins in circulation, including those held by team members or the company.
+  const tooltipTitleMktCap = `When calculating Market Capitalization (market cap), we account for all coins in circulation, including those held by team members or the company.
     This also includes coins in smart contracts or escrow. If the coins have been issued and have not been burned, they will be accounted for in the market cap.`
   return (
     <div className='d-flex '>
@@ -8,9 +8,10 @@ const CoinMarketDetail = () => {
         <div className=' pr-2 badge text-secondary'>
           Mkt. Cap.
           <i
-            class='fa fa-info-circle' 
-            data-toggle="tooltip" data-placement="bottom" title={`${tooltipTitleMktCap}`}
-            
+            class='fa fa-info-circle'
+            data-toggle='tooltip'
+            data-placement='bottom'
+            title={`${tooltipTitleMktCap}`}
           ></i>
         </div>
         <div className='label label-danger coin-market-border'>$ 6633</div>
@@ -20,15 +21,15 @@ const CoinMarketDetail = () => {
         <div className='coin-market-border'>$154k</div>
       </div>
       <div className='pr-2'>
-      <div className='badge text-secondary'>Open 24H</div>
-        <div className='coin-market-border'>$ 8472.96</div> 
+        <div className='badge text-secondary'>Open 24H</div>
+        <div className='coin-market-border'>$ 8472.96</div>
       </div>
       <div className='pr-2'>
-      <div className='badge text-secondary'>Low/High 24H</div>
+        <div className='badge text-secondary'>Low/High 24H</div>
         <div className='coin-market-border px-1'>$ 8472.96-$ 8472.96</div>
       </div>
       <div className='pr-2'>
-      <div className='badge text-secondary'>Weiss Rating</div>
+        <div className='badge text-secondary'>Weiss Rating</div>
         <div className='text-center coin-market-border'>A-</div>
       </div>
     </div>
@@ -38,6 +39,7 @@ class CoinName extends Component {
   render () {
     return (
       <div>
+        
         <div className='d-flex'>
           <div class='dropdown'>
             <button
