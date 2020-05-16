@@ -4,6 +4,7 @@ import propsType from 'prop-types'
 import {fetchAllCrypto} from "../actions/coinsActions"
 import { subReq} from "../components/CoinsSubs"
 import {connect} from "react-redux"
+
 class AllCoinsList extends Component {
     constructor(){
         super()
@@ -18,7 +19,7 @@ class AllCoinsList extends Component {
         //  * This function establishes the connect with the websocket and also ensures constant reconnection if connection closes
         //  *
         connect = () => {
-            var ws = new WebSocket('wss://streamer.cryptocompare.com/v2?api_key=39384a547eab1c6790c330f4c0ab9403cb9f98c2c5ab3b5ac5b47fe4d6f54dc1');
+            var ws = new WebSocket('wss://streamer.cryptocompare.com/v2?api_key=be0c6c7da1dfcc09d10b8818d43457b3d83b8cdf8c85d482072715a0e7043bd9');
             let that = this; // cache the this
             var connectInterval;    // websocket onopen event listener
             ws.onopen = () => {
@@ -41,7 +42,7 @@ class AllCoinsList extends Component {
             ws.onmessage = (event) => {
                 // console.log(event)
                 const message = JSON.parse(event.data)
-                console.log(message.TYPE,message)
+                console.log(message.TYPE,message.TOSYMBOL)
                 let coinExist=false;
                 const prevData=this.state.data.map(coin=>{
                     console.log(coin)
@@ -61,9 +62,6 @@ class AllCoinsList extends Component {
                   prevData.push(data)
                   }
                     this.setState({data:prevData})
-                
-                // let volume24hour=message.VOLUME24HOURTO        // console.log("Received from Cryptocompare: " + message);          };
-            // websocket onerror event listener
             }
             ws.onerror = err => {
                 console.error(

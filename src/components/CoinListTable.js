@@ -26,7 +26,7 @@ class CoinListTable extends Component {
     return (
       <div className="coinListTable">
         <Table responsive>
-          <thead>
+          <thead style={{borderBottom:"3px solid #00d665"}}>
             <tr>
               <th>#</th>
               <th>Coin</th>
@@ -35,16 +35,27 @@ class CoinListTable extends Component {
               <th>Total Vol</th>
               <th>Top Tier Vol</th>
               <th>Mkt. Cap.</th>
+              <th>Rating</th>
             </tr>
           </thead>
           <tbody>
              {this.props.data.map((coin,index)=>
                <tr>
                <td>{index+1}</td>
-               <td>{coin.sym}</td>
+               <td style={{display:"flex",}}>
+                 <div className="table-img m-2">
+                   {<img style={{size:"20%",width:"25px",height:"26px"}}src={"https://www.cryptocompare.com"+this.props.coinInfo[index].CoinInfo.ImageUrl} alt="coin-img"/>}
+                 </div>
+                 <div>
+                   <p>{this.props.coinInfo[index].CoinInfo.FullName}</p>
+                   <p>{this.props.coinInfo[index].CoinInfo.Name}</p>
+                 </div>
+                 </td>
                <td>{coin.price}</td>
                <td>{coin.vol*coin.price}</td>
                <td>{coin.topTierVol*coin.price}</td>
+               <td>mk</td>
+             <td>{this.props.coinInfo[index].CoinInfo.Rating.Weiss.Rating}</td>
              </tr>
              )}
           </tbody>

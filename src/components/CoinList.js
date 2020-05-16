@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import CoinListCards from './CoinListCards'
 import CoinListTable from './CoinListTable'
+import Forum from './Forum'
+import News from './News';
 import propsType from 'prop-types'
-import {fetchTopTenCrypto} from "../actions/coinsActions"
+import {fetchTopTenCrypto,fetchNews,fetchAllCrypto} from "../actions/coinsActions"
+// import{fetchNews,fetchForum} from "../assets/credentials"
 import {connect} from "react-redux"
 import{Link} from "react-router-dom"
 class CoinList extends Component {
@@ -10,14 +13,24 @@ class CoinList extends Component {
         super()
         this.state={
             data:[],
-            showAllCoins:false,
-            apiKey:"39384a547eab1c6790c330f4c0ab9403cb9f98c2c5ab3b5ac5b47fe4d6f54dc1",
-            bgColor:"",
-            borderClr:""
+            // news:[],
+            show:1,
+            actionVal:"SubAdd",
+            bgColorc: "white",borderClrc:"3px solid #00d665",
+            bgColorf:"",borderClrf:"",
+            bgColorn:"",borderClrn:"",
         }
     }
+   
     componentDidMount(){
         this.props.fetchTopTenCrypto()
+       this.props.fetchNews()
+        // this.props.fetchAllCrypto()
+        if(this.props.topTenCrypto.length===10){
+            this.props.topTenCrypto.forEach(coin=>{
+                this.state.data.push({img:coin.CoinInfo.ImageUrl,fullName:coin.CoinInfo.FullName})
+            })
+        }
         this.connect();
         }
         timeout = 250; // Initial timeout duration as a class variable/**
@@ -25,14 +38,14 @@ class CoinList extends Component {
         //  * This function establishes the connect with the websocket and also ensures constant reconnection if connection closes
         //  *
         connect = () => {
-            var ws = new WebSocket('wss://streamer.cryptocompare.com/v2?api_key=39384a547eab1c6790c330f4c0ab9403cb9f98c2c5ab3b5ac5b47fe4d6f54dc1');
+            var ws = new WebSocket('wss://streamer.cryptocompare.com/v2?api_key=be0c6c7da1dfcc09d10b8818d43457b3d83b8cdf8c85d482072715a0e7043bd9');
             let that = this; // cache the this
             var connectInterval;    // websocket onopen event listener
             ws.onopen = () => {
                 console.log("connected websocket main component");    
                this.setState({ ws: ws });
                 var subRequest = {
-                    "action":"SubAdd",
+                    "action":`${this.state.actionVal}`,
                     "subs":["11~BTC","21~BTC","5~CCCAGG~BTC~USD",
                            "11~ETH","21~ETH","5~CCCAGG~ETH~USD",
                            "11~BCH","21~BCH","5~CCCAGG~BCH~USD",
@@ -98,25 +111,56 @@ class CoinList extends Component {
                 const { ws } = this.state;
                 if (!ws || ws.readyState === WebSocket.CLOSED) this.connect(); //check if websocket instance is closed, if so call `connect` function.
             };
-      
+            showForum=()=>{
+                console.log("clicked forum")
+                this.setState({show:2,actionVal:"SubRemove",
+                bgColorf: "white",borderClrf:"3px solid #00d665",
+                bgColorc:"",borderClrc:"",
+                bgColorn:"",borderClrn:"",
+                })
+            }
+            showNews=()=>{
+                console.log("clicked News")
+                this.setState({show:3,actionVal:"SubRemove",
+                bgColorn: "white",borderClrn:"3px solid #00d665",
+                bgColorc:"",borderClrc:"",
+                bgColorf:"",borderClrf:"",
+                
+                })
+                // const da=fetchNews()
+                // console.log(da,"news fetch")
+            }
+            showCoins=()=>{ 
+                this.setState({ show:1,actionVal:"SubAdd",
+                bgColorc: "white",borderClrc:"3px solid #00d665",
+                bgColorf:"",borderClrf:"",
+                bgColorn:"",borderClrn:"",
+                })
+          
+            }
     render() { 
-        console.log(this.props,"BTC DATA")
+        console.log(this.state,"BTC DATA")
     return(
         <div className="coin-list">
             <CoinListCards/>
-            {this.state.data.length===10&&
             <div className="coin-list-table">
               <div className="coinTable-header">
-               <div className="coinTable-header-nav "
-                 style={{ backgroundColor: this.state.bgColor,borderTop:this.state.borderClr }}
-                 onClick={() => this.setState({ bgColor: "white",borderClr:"3px solid #00d665"})}>COINS</div>
-                  <div className="coinTable-header-nav">FORUM</div>
-                  <div className="coinTable-header-nav ">NEWS</div>
+               <div className="coinTable-header-nav"
+                 style={{ backgroundColor: this.state.bgColorc,borderTop:this.state.borderClrc}}
+                 onClick={this.showCoins}>COINS</div>
+                  <div className="coinTable-header-nav"
+                   style={{ backgroundColor: this.state.bgColorf,borderTop:this.state.borderClrf }}
+                   onClick={this.showForum}>FORUM</div>
+                  <div className="coinTable-header-nav"
+                   style={{ backgroundColor: this.state.bgColorn,borderTop:this.state.borderClrn }}
+                   onClick={this.showNews}>
+                     NEWS
+                  </div>
                </div>
+           {this.state.show===1&&
             <div className="feature-table m-2">
                Featured The World's #1 Online Crypto Casino. Wager 5 Mbtc - Get 100 Free Spins
-            </div>
-            <CoinListTable data={this.state.data} />
+            <CoinListTable data={this.state.data} coinInfo={this.props.topTenCrypto} />
             <div className="coinlist-table-footer">
             <Link to="/coins/list/USD/1">
             <button className="view-all-coins-btn">
@@ -125,6 +169,20 @@ class CoinList extends Component {
             </Link>
             </div>
             </div>}
+           {this.state.show===2&&
+            <div className="forum ">
+                <Forum/>
+                <Forum/>
+            </div>
+            }
+            {this.state.show===3&&
+            <div className="news-container ">
+                {this.props.forum.slice(0,5).map(data=>
+                <News news={data}/>
+                )}
+            </div>
+            }
+            </div>
         </div>
          );
     }
@@ -133,12 +191,14 @@ class CoinList extends Component {
 CoinList.propsType=({
     fetchTopTenCrypto:propsType.func.isRequired,
     fetchAllCrypto:propsType.func.isRequired,
+    fetchForum:propsType.func.isRequired,
     topTenCrypt:propsType.array.isRequired,
     allCrypto:propsType.array.isRequired
  })
  const mapStatetoProps=state=>({
      topTenCrypto:state.crypto.topTenCrypto,
-     allCrypto:state.crypto.allCrypto
+     allCrypto:state.crypto.allCrypto,
+     forum:state.crypto.forum
  })
  
- export default connect(mapStatetoProps,{fetchTopTenCrypto})(CoinList);
+ export default connect(mapStatetoProps,{fetchTopTenCrypto,fetchNews,fetchAllCrypto})(CoinList);

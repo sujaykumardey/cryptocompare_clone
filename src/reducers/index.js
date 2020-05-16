@@ -3,5 +3,6 @@ import coinsReducer from './coinsReducer';
 
 
 export default combineReducers({
-    crypto:coinsReducer
+    crypto:coinsReducer,
+   
 })
