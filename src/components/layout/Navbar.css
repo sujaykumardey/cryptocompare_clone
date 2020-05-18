@@ -1,0 +1,139 @@
+
+
+.md-form{
+    margin-top:30px;
+    width: 95%;
+    position: relative;
+    height:80px; 
+    outline:none;   
+    background-color: rgb(92, 232, 235);
+    border: none;
+}
+
+
+.md-form input{
+    width:100%;
+    height:100%;
+    color:rgb(134, 133, 133);
+    background-color:rgb(92, 232, 235);
+    border:none;
+    outline:none;
+    outline:none;    
+}
+
+.md-form label{
+    position: absolute;
+    bottom:-12px;
+    left:0px;
+    width:100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid rgb(134, 133, 133);
+    outline:none;
+}
+
+.md-form label::after{
+    content:"";
+    position: absolute;
+    left:0px;
+    bottom:-9px;
+    height:100%;
+    width:100%;
+    transform:translateX(-100%) ;
+    outline:none;
+ 
+}
+.content-name{
+    position: absolute;
+    bottom:5px;
+    left:0px;
+    transition: all 0.3s ease;
+    outline:none;
+    
+}
+
+.md-form input:focus + .text .content-name, 
+.md-form input:valid + .text .content-name{
+    transform: translateY(-150%);
+    font-size: 14px;
+    outline:none;
+    
+
+}
+
+.md-form input:focus + .text::after,
+.md-form input:valid + .text::after{
+    transform: translateX(0%);
+    outline: none;
+    
+    
+
+}
+
+.md-form input:focus-within+::after{
+    outline:none;
+    
+}
+
+#modalLRInput10{
+    background-color: rgb(92, 232, 235);
+    outline:none;
+}
+
+#modalLRInput10:focus{
+    box-shadow: none;
+}
+.login{
+    margin-top:50px;
+}
+
+#icon-button1,#icon-button2, #icon-button3{
+    border-radius: 30px;
+    border:0.5px solid rgb(175, 172, 172);
+    background-color: white;
+    -webkit-box-shadow: 10px 10px 5px -9px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px -9px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px -9px rgba(0,0,0,0.75);
+}
+
+#icon-button1:hover,#icon-button2:hover, #icon-button3:hover{
+    border-radius: 30px;
+    background-color: white;
+    -webkit-box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.75);
+cursor: pointer;
+}
+button{
+    cursor: pointer;
+}
+
+.fab{
+    color:rgb(15, 49, 247);
+}
+
+.btn-signup{
+    background: rgb(18,64,65);
+    background: radial-gradient(circle, rgba(18,64,65,1) 22%, rgba(32,96,213,1) 73%);
+    border-radius: 12px;
+    padding:5px 0 5px 0;
+    color:white;
+}
+.btn-login{
+    background: rgb(18,64,65);
+    background: radial-gradient(circle, rgba(18,64,65,1) 22%, rgba(32,96,213,1) 73%);
+    border-radius: 12px;
+    padding:5px 0 5px 0;
+    color:white;
+}
+
+.icon-button{
+    text-align: center;
+}
+
+.fab{
+    padding:10px 25px 10px 25px;
+    color: rgb(36, 88, 131);
+    
+    
+}

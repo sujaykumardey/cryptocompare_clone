@@ -7,6 +7,7 @@ class Home extends Component {
         return (
             <>
             <Navbar />
+            
             <div className="container" style={{height:"50vh"}}> TEAM DENVER </div>
             
             <Footer/>     
