@@ -5,7 +5,7 @@ import './App.css'
 export default class App extends Component {
   render () {
     return (
-      <div className='coindetailsscreen'>
+      <div className='coindetailsscreen border-gray'>
         <CoinDetailsScreen />
       </div>
     )

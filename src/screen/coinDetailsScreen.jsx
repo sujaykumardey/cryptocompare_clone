@@ -7,7 +7,7 @@ import CoinInfoProfile from '../components/coinInfoProfile'
 class CoinDetailsScreen extends Component {
   render () {
     return (
-      <div className='container m-5'>
+      <div className='screen-container container m-5 p-4'>
         <div className='row'>
           <div class='col-lg-3'>
             <CoinInfoProfile />
@@ -16,7 +16,7 @@ class CoinDetailsScreen extends Component {
             <CoinName />
             <CoinHistoryPriceChart />
             <CoinDetail />
-            <div className='coin-details-container p-4'></div>
+            
           </div>
         </div>
       </div>

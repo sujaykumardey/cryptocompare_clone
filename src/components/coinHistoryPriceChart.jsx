@@ -4,38 +4,54 @@ import HighchartsReact from 'highcharts-react-official'
 
 class CoinHistoryPriceChart extends Component {
   state = {
+      isButtonClicked:'day',
     options: {
+        
         time: {
             useUTC: false
         },
       rangeSelector: {
-        selected: 1
+        // selected: 1
+        enabled: false
+
       },
+      navigator: {
+        enabled: false
+        
+    },
+    scrollbar: {
+        enabled: false
+    },
 
       yAxis: [
-        {
+        {                
+            opposite:false,
+
           min: 9200,
           //         // max: 140,
           tickInterval: 50,
-          labels: {
-            align: 'left'
-          },
+        //   labels: {
+        //     align: 'left'
+        //   },
           height: '80%',
           resize: {
             enabled: true
           }
         },
         {
-          labels: {
-            align: 'right'
-          },
+            opposite:false,
+        //   labels: {
+        //     align: 'right'
+        //   },
           top: '80%',
           height: '20%',
           offset: 0,
           resize: {
             enabled: true
           }
-        }
+        }, {
+            opposite:false
+          }
       ],
       tooltip: {
         split: true
@@ -118,6 +134,8 @@ class CoinHistoryPriceChart extends Component {
         })
 
         this.setState({
+            isButtonClicked : 'day',
+
           historicalData: historicalDay.Data.Data,
           options: {
             ...this.state.options,
@@ -188,6 +206,8 @@ class CoinHistoryPriceChart extends Component {
         })
 
         this.setState({
+            isButtonClicked : 'hour',
+
           historicalDataHourly: historicalDataHour.Data.Data,
           options: {
             ...this.state.options,
@@ -254,6 +274,8 @@ class CoinHistoryPriceChart extends Component {
         })
 
         this.setState({
+            isButtonClicked : 'week',
+
           historicalDataWeekly: historicalDataWeek.Data.Data,
           options: {
             ...this.state.options,
@@ -320,6 +342,7 @@ class CoinHistoryPriceChart extends Component {
         })
 
         this.setState({
+            isButtonClicked : 'month',
           historicalDataMonthly: historicalDataMonth.Data.Data,
           options: {
             ...this.state.options,
@@ -345,7 +368,7 @@ class CoinHistoryPriceChart extends Component {
   }
   render () {
     return (
-      <div className='p-2 m-2 border-gray'>
+      <div className='p-2 border-gray'>
         <div className='highchart' >
           <HighchartsReact
             highcharts={Highcharts}
@@ -353,32 +376,32 @@ class CoinHistoryPriceChart extends Component {
             options={this.state.options}
           />
         </div>
-        <div>
+        <div className='btn-chart-group'>
           <button
-            type='button'
+            // type='button'
             onClick={this.handleHourButton}
-            class='btn btn-outline-success  px-2'
+            className={`px-2 btn-left-corners-graph ${this.state.isButtonClicked === 'hour' ? 'btn-selected' : 'btn-graph'}`}
           >
             1 Hour
           </button>
           <button
-            type='button'
+            // type='button'
             onClick={this.handleDayButton}
-            class='btn btn-outline-success pr-2'
+            className={`px-2 btn-middle-graph ${this.state.isButtonClicked === 'day' ? 'btn-selected' : 'btn-graph'}`}
           >
             1 Day
           </button>
           <button
-            type='button'
+            // type='button'
             onClick={this.handleWeekButton}
-            class='btn btn-outline-success pr-2'
+            className={`px-2 btn-middle-graph ${this.state.isButtonClicked === 'week' ? 'btn-selected' : 'btn-graph'}`}
           >
             1 Week
           </button>
           <button
-            type='button'
+            // type='button'
             onClick={this.handleMonthButton}
-            class='btn btn-outline-success pr-2'
+            className={`px-2 btn-right-corners-graph ${this.state.isButtonClicked === 'month' ? 'btn-selected' : 'btn-graph'}`}
           >
             1 Month
           </button>

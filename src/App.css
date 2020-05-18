@@ -24,8 +24,10 @@
 /* .ps-l{
     float: left;  
 } */
-.coin-details-container {
-  padding: 2em;
+.coin-details-paragraph {
+    padding: 0 1em 1em 1em ;
+font-size: .875em;  
+color: #6B6B6B;
 }
 
 .price-change-caret {
@@ -76,5 +78,54 @@
     border-radius: 4px;
 }
 .highchart{
-    width: 800px;
+    /* width: 500px; */
+}
+.coindetailsscreen{
+    background: #f1f2f7;
+}
+
+.screen-container{
+    background-color: white;
+}
+.btn-selected{
+    background: #2cbb4d;
+    border-color: #009700;
+    color: white;
+    
+}
+.btn-graph{
+    background: white;
+    outline:none;
+}
+.btn-left-corners-graph{
+    border: #DEE9F5 solid 1px;
+    border-radius: 4px 0 0 4px;
+}
+.btn-right-corners-graph{
+    border: #DEE9F5 solid 1px;
+    border-radius: 0 4px 4px 0 ;
+    border-left: 0
+}
+.btn-middle-graph{
+    border: #DEE9F5 solid 1px;
+    border-left: 0 ;
+}
+.btn-chart-group button:focus {
+    outline:none;    
+}
+
+.coin-detail-heading{
+    padding: .5em 2em;
+    font-size: .75em;
+    display: inline-block;
+    /* width: 10%; */
+    border-right: #DEE9F5 solid 1px;
+    border-bottom:#00D665 solid 3px;
+}
+
+.table-heading{
+    font-size: .6875rem;
+}
+.table-row{
+    font-size: .75em;
 }
