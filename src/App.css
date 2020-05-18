@@ -1,10 +1,25 @@
-*{ 
+/* *{ 
     border: #DEE9F5 solid 1px;
     border-radius: 4px;
-}
+} */
 .coin-short-form{
     background: #F9F9F9;
     float: right
+}
+.price-inc{
+    color: #3d9400;
+}
+.price-dec{
+    color: #A11B0A;
+}
+.price-same{
+    color:#2D4F79 ;
+}
+.coin-price-style{
+    position: relative;
+    bottom: .3em;
+    font-size: 3.5em;
+    font-weight: bold;
 }
 /* .ps-l{
     float: left;  
@@ -59,4 +74,7 @@
 .border-gray{
     border: #DEE9F5 solid 1px;
     border-radius: 4px;
+}
+.highchart{
+    width: 800px;
 }

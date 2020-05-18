@@ -5,12 +5,16 @@ import HighchartsReact from 'highcharts-react-official'
 class CoinHistoryPriceChart extends Component {
   state = {
     options: {
+        time: {
+            useUTC: false
+        },
       rangeSelector: {
         selected: 1
       },
+
       yAxis: [
         {
-          min: 8700,
+          min: 9200,
           //         // max: 140,
           tickInterval: 50,
           labels: {
@@ -54,8 +58,10 @@ class CoinHistoryPriceChart extends Component {
     }
   }
   componentDidMount () {
+    this.handleDayButton()
+  }
+  handleDayButton = () => {
     let url1 = `https://min-api.cryptocompare.com/data/v2/histominute?aggregate=1&e=CCCAGG&extraParams=https:%2F%2Fwww.cryptocompare.com&fsym=BTC&limit=1450&tryConversion=false&tsym=USD&api_key=19f6ab549381046870ae7932ef6224e1e11266bd4dad353ef9a8abc930da70f6`
-    let url = `https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=100&api_key=19f6ab549381046870ae7932ef6224e1e11266bd4dad353ef9a8abc930da70f6`
     fetch(url1)
       .then(response => response.json())
       .then(historicalDay => {
@@ -66,7 +72,15 @@ class CoinHistoryPriceChart extends Component {
         let areaData = []
         var xAxixData = []
 
+        let minOld = newHistoricalData[0].close
+        let maxOld = newHistoricalData[0].close
         for (let i = 0; i < newHistoricalData.length; i++) {
+            if (newHistoricalData[i].close < minOld) {
+                minOld = newHistoricalData[i].close
+              }
+              if (newHistoricalData[i].close > maxOld) {
+                maxOld = newHistoricalData[i].close
+              }
           var d = new Date(newHistoricalData[i].time * 1000)
           //   console.log(d.getHours())
 
@@ -75,7 +89,7 @@ class CoinHistoryPriceChart extends Component {
               hour: '2-digit',
               minute: '2-digit'
             })
-            console.log(d)
+            // console.log(d)
             //   xAxixData.push(timeHHMM)
             areaData.push([
               newHistoricalData[i].time * 1000,
@@ -85,10 +99,10 @@ class CoinHistoryPriceChart extends Component {
               newHistoricalData[i].time * 1000,
               newHistoricalData[i].volumefrom
             ])
-            i = i + 57
+            // i = i + 57
           }
         }
-        console.log(xAxixData)
+        // console.log(xAxixData)
 
         let series = []
         series.push({
@@ -105,12 +119,25 @@ class CoinHistoryPriceChart extends Component {
 
         this.setState({
           historicalData: historicalDay.Data.Data,
-          options: { ...this.state.options, series }
-        })
-        // dispatch({
-        //     type:actions.FETCH_BOARDS,
-        //     payload: boards
-        // })
+          options: {
+            ...this.state.options,
+            series,
+            yAxis: [
+              {
+                min: minOld,
+                max: maxOld,
+                labels: {
+                  align: 'left'
+                },
+                height: '80%',
+                resize: {
+                  enabled: true
+                }
+              },
+              ...this.state.options.yAxis.slice(1)
+            ]
+          }        })
+        
       })
       .catch(e => console.log('Error in fetching boards'))
   }
@@ -124,8 +151,17 @@ class CoinHistoryPriceChart extends Component {
 
         let columnData = []
         let areaData = []
-
+        
+        let minOld = newHistoricalData[0].close
+        let maxOld = newHistoricalData[0].close
         for (let i = 0; i < newHistoricalData.length; i++) {
+            
+          if (newHistoricalData[i].close < minOld) {
+            minOld = newHistoricalData[i].close
+          }
+          if (newHistoricalData[i].close > maxOld) {
+            maxOld = newHistoricalData[i].close
+          }
           var d = new Date(newHistoricalData[i].time * 1000)
           areaData.push([
             newHistoricalData[i].time * 1000,
@@ -134,8 +170,10 @@ class CoinHistoryPriceChart extends Component {
           columnData.push([
             newHistoricalData[i].time * 1000,
             newHistoricalData[i].volumefrom
-          ])    
+          ])
         }
+        console.log('min xxxx', maxOld)
+
         let series = []
         series.push({
           type: 'area',
@@ -151,7 +189,24 @@ class CoinHistoryPriceChart extends Component {
 
         this.setState({
           historicalDataHourly: historicalDataHour.Data.Data,
-          options: { ...this.state.options, series }
+          options: {
+            ...this.state.options,
+            series,
+            yAxis: [
+              {
+                min: minOld,
+                max: maxOld,
+                labels: {
+                  align: 'left'
+                },
+                height: '80%',
+                resize: {
+                  enabled: true
+                }
+              },
+              ...this.state.options.yAxis.slice(1)
+            ]
+          }
         })
       })
       .catch(e => console.log(e))
@@ -167,7 +222,15 @@ class CoinHistoryPriceChart extends Component {
         let columnData = []
         let areaData = []
 
+        let minOld = newHistoricalData[0].close
+        let maxOld = newHistoricalData[0].close
         for (let i = 0; i < newHistoricalData.length; i++) {
+            if (newHistoricalData[i].close < minOld) {
+                minOld = newHistoricalData[i].close
+              }
+              if (newHistoricalData[i].close > maxOld) {
+                maxOld = newHistoricalData[i].close
+              }
           areaData.push([
             newHistoricalData[i].time * 1000,
             newHistoricalData[i].close
@@ -175,7 +238,7 @@ class CoinHistoryPriceChart extends Component {
           columnData.push([
             newHistoricalData[i].time * 1000,
             newHistoricalData[i].volumefrom
-          ])    
+          ])
         }
         let series = []
         series.push({
@@ -192,7 +255,24 @@ class CoinHistoryPriceChart extends Component {
 
         this.setState({
           historicalDataWeekly: historicalDataWeek.Data.Data,
-          options: { ...this.state.options, series }
+          options: {
+            ...this.state.options,
+            series,
+            yAxis: [
+              {
+                min: minOld,
+                max: maxOld,
+                labels: {
+                  align: 'left'
+                },
+                height: '80%',
+                resize: {
+                  enabled: true
+                }
+              },
+              ...this.state.options.yAxis.slice(1)
+            ]
+          }
         })
       })
       .catch(e => console.log(e))
@@ -208,7 +288,15 @@ class CoinHistoryPriceChart extends Component {
         let columnData = []
         let areaData = []
 
+        let minOld = newHistoricalData[0].close
+        let maxOld = newHistoricalData[0].close
         for (let i = 0; i < newHistoricalData.length; i++) {
+            if (newHistoricalData[i].close < minOld) {
+                minOld = newHistoricalData[i].close
+              }
+              if (newHistoricalData[i].close > maxOld) {
+                maxOld = newHistoricalData[i].close
+              }
           areaData.push([
             newHistoricalData[i].time * 1000,
             newHistoricalData[i].close
@@ -216,7 +304,7 @@ class CoinHistoryPriceChart extends Component {
           columnData.push([
             newHistoricalData[i].time * 1000,
             newHistoricalData[i].volumefrom
-          ])    
+          ])
         }
         let series = []
         series.push({
@@ -233,15 +321,32 @@ class CoinHistoryPriceChart extends Component {
 
         this.setState({
           historicalDataMonthly: historicalDataMonth.Data.Data,
-          options: { ...this.state.options, series }
+          options: {
+            ...this.state.options,
+            series,
+            yAxis: [
+              {
+                min: minOld,
+                max: maxOld,
+                labels: {
+                  align: 'left'
+                },
+                height: '80%',
+                resize: {
+                  enabled: true
+                }
+              },
+              ...this.state.options.yAxis.slice(1)
+            ]
+          }
         })
       })
       .catch(e => console.log(e))
   }
   render () {
     return (
-      <div>
-        <div style={{ minWidth: '400px' }}>
+      <div className='p-2 m-2 border-gray'>
+        <div className='highchart' >
           <HighchartsReact
             highcharts={Highcharts}
             constructorType={'stockChart'}
@@ -249,16 +354,32 @@ class CoinHistoryPriceChart extends Component {
           />
         </div>
         <div>
-          <button type='button' onClick={this.handleHourButton} class='btn btn-outline-success  px-2'>
+          <button
+            type='button'
+            onClick={this.handleHourButton}
+            class='btn btn-outline-success  px-2'
+          >
             1 Hour
           </button>
-          <button type='button' onClick={this.handleDayButton} class='btn btn-outline-success pr-2'>
+          <button
+            type='button'
+            onClick={this.handleDayButton}
+            class='btn btn-outline-success pr-2'
+          >
             1 Day
           </button>
-          <button type='button' onClick={this.handleWeekButton} class='btn btn-outline-success pr-2'>
+          <button
+            type='button'
+            onClick={this.handleWeekButton}
+            class='btn btn-outline-success pr-2'
+          >
             1 Week
           </button>
-          <button type='button' onClick={this.handleMonthButton} class='btn btn-outline-success pr-2'>
+          <button
+            type='button'
+            onClick={this.handleMonthButton}
+            class='btn btn-outline-success pr-2'
+          >
             1 Month
           </button>
         </div>

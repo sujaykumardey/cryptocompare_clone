@@ -17,7 +17,7 @@ class CoinInfoProfile extends Component {
         </div>
         <div>
         
-        <div><button type='button' class=' w-100 btn btn-labeled coin-follow'>
+        <div><button type='button' class=' w-100 my-4 btn btn-labeled coin-follow'>
           <span class='btn-label '>
             <i class='fa fa-plus'></i>
           </span>

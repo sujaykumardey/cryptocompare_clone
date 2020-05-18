@@ -21,32 +21,32 @@ class CoinDetail extends Component {
             </thead>
             <tbody>
               <tr>
-                <th scope='row'>
+                <td scope='row'>
                   21,000,000.0
-                  <div>DifficultyAdj.</div>
-                </th>
+                  <div className='font-weight-bold'>DifficultyAdj.</div>
+                </td>
                 <td>
                   SHA-256
-                  <div>BlockRR.</div>
+                  <div className='font-weight-bold'>BlockRR.</div>
                 </td>
                 <td>
                   PoW
-                  <div>BlockNo.</div>
+                  <div className='font-weight-bold'>BlockNo.</div>
                 </td>
 
                 <td>
                   03/01/2009
-                  <div>Network H/s</div>
+                  <div className='font-weight-bold'>Network H/s</div>
                 </td>
 
                 <td>
                   {' '}
-                  <div>Current Supply</div>
+                  <div className='font-weight-bold'>Current Supply</div>
                 </td>
 
                 <td>
                   <a href='https://bitcoin.org/en/'>Bitcoin</a>{' '}
-                  <div>Block Reward</div>
+                  <div className='font-weight-bold'>Block Reward</div>
                 </td>
               </tr>
               {/* Row-2 */}
