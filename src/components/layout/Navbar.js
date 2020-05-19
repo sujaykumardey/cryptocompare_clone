@@ -176,7 +176,8 @@ handleModal = (e) => {
             <div className="modal-content">
               <div className="modal-c-tabs">
                 <ul
-                  className="nav nav-tabs bg-success md-tabs tabs-2 light-blue darken-3"
+                  id="nav-headers"
+                  className="nav nav-tabs md-tabs tabs-2"
                   role="tablist"
                 >
                   <li className="nav-item">
@@ -220,7 +221,7 @@ handleModal = (e) => {
                     role="tabpanel"
                   >
                     <div className="modal-body mb-1">
-                      <div class="md-form form-sm mb-3">
+                      <div className="md-form form-sm mb-3">
                         <i className="fas fa-envelope prefix"></i>
                         <input
                           type="text"
@@ -238,12 +239,12 @@ handleModal = (e) => {
                           data-success="right"
                           for="modalLRInput11"
                         >
-                          <span class="content-name" > 
+                          <span className="content-name" > 
                           Email</span>
                         </label>
                       </div>
                         
-                      <div class="md-form form-sm mb-4">
+                      <div className="md-form form-sm mb-4">
                         <i className="fas fa-lock prefix"></i>
                         <input
                           type="password"
@@ -256,11 +257,11 @@ handleModal = (e) => {
                           required
                         />
                         <label
-                          class="text"
+                          className="text"
                           data-error="wrong"
                           data-success="right"
                           for="modalLRInput11"
-                        ><span class="content-name" > 
+                        ><span className="content-name" > 
                           Password</span>
                         </label>
                       </div>
@@ -316,7 +317,7 @@ handleModal = (e) => {
                           }
                           type="text"
                           id="modalLRInput10"
-                          class="form-control form-control-sm validate"
+                          className="form-control form-control-sm validate"
                           autoComplete="off"
                           required
                         />
@@ -332,8 +333,8 @@ handleModal = (e) => {
 
                       </div>
 
-                      <div class="md-form form-sm mb-4">
-                        <i class="fas fa-lock prefix"></i>
+                      <div className="md-form form-sm mb-4">
+                        <i className="fas fa-lock prefix"></i>
                          
                         
                         <input
@@ -343,7 +344,7 @@ handleModal = (e) => {
                             this.setState({ password: e.target.value })
                           }
                           id="modalLRInput10"
-                          class="form-control form-control-sm validate"
+                          className="form-control form-control-sm validate"
                           autoComplete="off"
                           required
                         />
@@ -352,19 +353,19 @@ handleModal = (e) => {
                           data-error="wrong"
                           data-success="right"
                           for="modalLRInput14"
-                        ><span class="content-name" > 
+                        ><span className="content-name" > 
                          Password</span>
                           </label>
                       </div>
 
-                      <div class="text-center form-sm mt-2">
+                      <div className="text-center form-sm mt-2">
                         <button
-                          class="btn-signup btn-block waves-effect"
+                          className="btn-signup btn-block waves-effect"
                           data-dismiss='modal'
                           onClick={(e) => this.handleSubmit(e)}
                           
                         >
-                          Sign up <i class="fas fa-sign-in ml-1"></i>
+                          Sign up <i className="fas fa-sign-in ml-1"></i>
                         </button>
                       </div>
                     </div>

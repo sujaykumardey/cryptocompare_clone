@@ -99,6 +99,7 @@ box-shadow: 10px 10px 5px -9px rgba(0,0,0,0.75);
 -moz-box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.75);
 box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.75);
 cursor: pointer;
+outline:none;
 }
 button{
     cursor: pointer;
@@ -132,4 +133,8 @@ button{
     color: rgb(36, 88, 131);
     
     
+}
+
+#nav-headers{
+    background-color: #7ecc98
 }

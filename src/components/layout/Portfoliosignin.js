@@ -209,40 +209,40 @@ class Portfoliosignin extends Component {
         </div>
 
         <div
-          class="modal fade"
+          className="modal fade"
           id="orangeModalSubscription"
           tabindex="-1"
           role="dialog"
           aria-labelledby="myModalLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog modal-notify modal-warning" role="document">
-            <div class="modal-content">
-              <div class="modal-header text-center">
-                <h4 class="modal-title white-text w-100 font-weight-bold py-2">
+          <div className="modal-dialog modal-notify modal-warning" role="document">
+            <div className="modal-content">
+              <div className="modal-header text-center">
+                <h4 className="modal-title white-text w-100 font-weight-bold py-2">
                   Add new coin to portfolio
                 </h4>
                 <button
                   type="button"
-                  class="close"
+                  className="close"
                   data-dismiss="modal"
                   aria-label="Close"
                 >
-                  <span aria-hidden="true" class="white-text">
+                  <span aria-hidden="true" className="white-text">
                     &times;
                   </span>
                 </button>
               </div>
 
-              <div class="modal-body">
-                <div class="md-form mb-5">
-                  <i class="fa fa-wallet prefix white-text"></i>
+              <div className="modal-body modal-portfolio">
+                <div className="md-form mb-5">
+                  <i className="fa fa-wallet prefix white-text"></i>
                   <input
                     type="text"
                     id="modalLRInput10"
                     value={this.state.coin}
                     onChange={(e) => this.setState({ coin: e.target.value })}
-                    class="form-control validate"
+                    className="form-control validate"
                     autoComplete="off"
                     required
                   />
@@ -250,14 +250,14 @@ class Portfoliosignin extends Component {
                   <span className="content-name">Coin</span>
                   </label>
                 </div>
-                <div class="md-form">
-                  <i class="fa fa-dollar-sign white-text"></i>
+                <div className="md-form">
+                <i className="fas fa-dollar-sign prefix white-text"></i>
                   <input
                     type="text"
                     id="modalLRInput10"
                     value={this.state.price}
                     onChange={(e) => this.setState({ price: e.target.value })}
-                    class="form-control validate"
+                    className="form-control validate"
                     autoComplete="off"
                     required
                   />
@@ -268,13 +268,13 @@ class Portfoliosignin extends Component {
                 
               </div>
 
-              <div class="modal-footer justify-content-center">
+              <div className="modal-footer justify-content-center">
                 <a
                   type="button"
-                  class="btn btn-outline-warning waves-effect"
+                  className="btn btn-outline-warning waves-effect"
                   onClick={(e) => this.handleCoin(e)}
                 >
-                  ADD TO PORTFOLIOS<i class="fas fa-paper-plane-o ml-1"></i>
+                  ADD TO PORTFOLIOS<i className="fas fa-paper-plane-o ml-1"></i>
                 </a>
               </div>
             </div>
