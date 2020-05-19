@@ -17,7 +17,6 @@
     color:rgb(134, 133, 133);
     background-color:rgb(92, 232, 235);
     border:none;
-    outline:none;
     outline:none;    
 }
 
@@ -56,9 +55,6 @@
 .md-form input:valid + .text .content-name{
     transform: translateY(-150%);
     font-size: 14px;
-    outline:none;
-    
-
 }
 
 .md-form input:focus + .text::after,

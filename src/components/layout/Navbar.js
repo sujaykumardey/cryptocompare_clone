@@ -223,7 +223,7 @@ handleModal = (e) => {
                       <div class="md-form form-sm mb-3">
                         <i className="fas fa-envelope prefix"></i>
                         <input
-                          type="email"
+                          type="text"
                           id="modalLRInput10"
                           value={this.state.email}
                           autoComplete="off"
@@ -256,7 +256,7 @@ handleModal = (e) => {
                           required
                         />
                         <label
-                          className="text"
+                          class="text"
                           data-error="wrong"
                           data-success="right"
                           for="modalLRInput11"
@@ -290,7 +290,7 @@ handleModal = (e) => {
                       <div className="md-form form-sm mb-3">
                         <i className="fas fa-envelope prefix"></i>
                         <input
-                          type="email"
+                          type="text"
                           value={this.state.name}
                           onChange={(e) =>
                             this.setState({ name: e.target.value })
@@ -314,7 +314,7 @@ handleModal = (e) => {
                           onChange={(e) =>
                             this.setState({ email: e.target.value })
                           }
-                          type="email"
+                          type="text"
                           id="modalLRInput10"
                           class="form-control form-control-sm validate"
                           autoComplete="off"
