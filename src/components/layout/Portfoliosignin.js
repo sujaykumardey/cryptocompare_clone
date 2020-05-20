@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Portfoliosignin.css';
-import Navbar from './Navbar';
+import NavbarCompo from './Navbarcompo';
+
 import Footer from './footer';
 import Coincards from './coincards';
 import { addCoinWallet } from '../../actions/postActions';
@@ -18,7 +19,8 @@ class Portfoliosignin extends Component {
     this.state = {
       coin: null,
       price: null,
-      token: this.props.token,
+      token: null,
+      username:null,
     };
   }
 
@@ -31,7 +33,10 @@ class Portfoliosignin extends Component {
     this.props.addCoinWallet(data, this.props.token);
   };
 
+ 
+
   componentDidMount() {
+    this.setState({username:this.props.name})
     client.onopen = () => {
       console.log('WebSocket Client Connected');
     };
@@ -44,7 +49,6 @@ class Portfoliosignin extends Component {
 
       client.onmessage = (event) => {
         let message = JSON.parse(event.data);
-        console.log(message);
         this.setState((prevState) => {
           if (message.PRICE === undefined) {
             this.setState({ coin_price: prevState.coin_price });
@@ -54,10 +58,10 @@ class Portfoliosignin extends Component {
         });
       };
     };
-    if (this.props.token === undefined) return <Redirect to="/portfolio" />;
   }
 
   render() {
+    if(this.state.token===undefined) return <Redirect to='/' />;
     const result =
       this.props.coin === undefined
         ? null
@@ -68,17 +72,9 @@ class Portfoliosignin extends Component {
 
     return (
       <div className="main-container">
-        <Navbar />
+        <NavbarCompo name={this.state.username} />
         <div className="container-body">
-          <div className="advertise">
-            <img
-              src="https://www.cryptocompare.com/media/36935012/bitcoin_english_dsktp.gif"
-              width="700"
-              height="90"
-              alt="adv"
-            />
-            <Navbar />
-          </div>
+          
 
           <div className="container-portfolio">
             <div className="header-portfolio">

@@ -1,4 +1,4 @@
-import {FETCH_USER,POST_COIN,DELETE_COIN} from './types';
+import {FETCH_USER,POST_COIN,DELETE_COIN,DELETE_USER} from './types';
 import {registrationUser,loginUser,addCoin,deleteCoin} from '../assets/credentials';
 
 export const userResistration = (data) => (dispatch) => {
@@ -39,3 +39,9 @@ export const onDeleteCoin= (id,token) => (dispatch) => {
   });
 };
 
+export const Logout= () => (dispatch) => {
+  dispatch({      
+    type: DELETE_USER,
+    payload: [],
+  });
+};
