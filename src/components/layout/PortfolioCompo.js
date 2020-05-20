@@ -5,12 +5,7 @@ class PortfolioCompo extends Component {
     render() {
         return (
             <div className="container-body">
-            <div className="advertise">
-                <img src='https://www.cryptocompare.com/media/36935012/bitcoin_english_dsktp.gif'  width="700" height="90"  alt="adv"/>
-            </div>
-
-
-            <div className="container-portfolio" >
+             <div className="container-portfolio" >
 				<div className="header-portfolio">
 					<h1 className="portfolios">
 						<span className="fa fa-bar-chart"></span> MY PORTFOLIOS
@@ -33,7 +28,7 @@ class PortfolioCompo extends Component {
 							</div>
 
                             <div className="emptyporfolio-footer">
-							<button className="btn btn-warning" type="button" ng-transclude="" ng-click="showLogin()">
+							<button className="btn btn-warning" type="button" onClick={(e)=>this.props.openLogin(e)} >
 								<i className="fa fa-sign-in ng-scope"></i> <b className="ng-scope">Login</b><span className="ng-scope"> or </span><b className="ng-scope">Register</b>
 							</button>
 							<p className="portfolio-caution">Never invest in cryptos more than you can afford to lose and always try to keep them in your own wallet!</p>
