@@ -1,11 +1,9 @@
-import {} from '../actions/types';
-// import * as actions from '../actions/types'
-
 import {
   FETCH_USER,
   POST_COIN,
   DELETE_COIN,
   DELETE_USER,
+  UPDATE_COIN_PRICE,
 } from '../actions/types';
 
 const initialState = {
@@ -29,11 +27,18 @@ export default function (state = initialState, action) {
       return {
         ...state,
       };
+
+    case UPDATE_COIN_PRICE:
+      return {
+        ...state,
+        cryptoprice: action.payload,
+      };
     case DELETE_USER:
       return {
         ...state,
         users: action.payload,
       };
+
     default:
       return state;
   }
