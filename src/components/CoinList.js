@@ -4,10 +4,11 @@ import CoinListTable from './CoinListTable'
 import Forum from './Forum'
 import News from './News';
 import propsType from 'prop-types'
-import {fetchTopTenCrypto,fetchNews,fetchAllCrypto} from "../actions/coinsActions"
+import { subReq} from "../components/CoinsSubs"
+import {fetchTopTenCrypto,fetchNews,fetchAllCrypto,fetchForum} from "../actions/coinsActions"
 // import{fetchNews,fetchForum} from "../assets/credentials"
 import {connect} from "react-redux"
-import{Link} from "react-router-dom"
+// import{Link} from "react-router-dom"
 class CoinList extends Component {
     constructor(){
         super()
@@ -19,13 +20,17 @@ class CoinList extends Component {
             bgColorc:"white",borderClrc:"3px solid #00d665",
             bgColorf:"",borderClrf:"",
             bgColorn:"",borderClrn:"",
+            AllNewsViews:"0",
+            showCoins:"0"
+
         }
     }
     
     componentDidMount(){
-        this.props.fetchTopTenCrypto()
+        this.props.fetchAllCrypto()
        this.props.fetchNews()
-        // this.props.fetchAllCrypto()
+        this.props.fetchForum()
+        this.props.fetchTopTenCrypto()
         if(this.props.topTenCrypto.length===10){
             this.props.topTenCrypto.forEach(coin=>{
                 this.state.data.push({img:coin.CoinInfo.ImageUrl,fullName:coin.CoinInfo.FullName})
@@ -47,7 +52,9 @@ class CoinList extends Component {
                const subs=this.props.topTenCrypto.map(crypto=>{
                    return crypto.CoinInfo.Name
                })
-                var subRequest = {
+                var subRequest = {}
+                if(this.state.showCoins==="0")
+                    subRequest={
                     "action":`${this.state.actionVal}`,
                     "subs":[`11~${subs[0]}`,`21~${subs[0]}`,`5~CCCAGG~${subs[0]}~USD`,
                             `11~${subs[1]}`,`21~${subs[1]}`,`5~CCCAGG~${subs[1]}~USD`,
@@ -61,6 +68,9 @@ class CoinList extends Component {
                             `11~${subs[9]}`,`21~${subs[9]}`,`5~CCCAGG~${subs[9]}~USD`,
                     ]
                 } 
+                if(this.state.showCoins==="1"){
+                    subRequest=subReq
+                }
                 ws.send(JSON.stringify(subRequest));
                 that.timeout = 2500; // reset timer to 250 on open of websocket connection
                 clearTimeout(connectInterval); // clear Interval on on open of websocket connection
@@ -83,7 +93,13 @@ class CoinList extends Component {
                 const prevData=this.state.data.map(coin=>{
                     console.log(coin)
                     if(message.TYPE==="5"&&coin.sym===message.FROMSYMBOL&&message.PRICE!==undefined)
-                    {coin.price=message.PRICE;
+                    {   if(coin.price<message.PRICE)
+                           { coin.priceClr="#A11B0A"
+                             coin.textClr="white"}
+                        if(coin.price>message.PRICE)
+                            {coin.priceClr="#3D9400"
+                            coin.textClr="white"}
+                        coin.price=message.PRICE;
                           coinExist=true;
                         console.log(coin.price,message.FROMSYMBOL,"inside price")}
                     else if(message.TYPE==="21"&&coin.sym===message.SYMBOL&&message.TOPTIERFULLVOLUME!==undefined)
@@ -93,7 +109,7 @@ class CoinList extends Component {
                     return coin
                  })  
                  if(!coinExist&&message.TYPE==="5"&&message.PRICE!==undefined)
-                  { const data={ vol:message.VOLUME24HOURTO,sym:message.FROMSYMBOL,tosym:message.TOSYMBOL,price:message.PRICE,topTierVol:message.TOPTIERFULLVOLUME}
+                  { const data={ vol:message.VOLUME24HOURTO,sym:message.FROMSYMBOL,tosym:message.TOSYMBOL,price:message.PRICE,priceClr:"#f5f5f5",textClr:"black",topTierVol:message.TOPTIERFULLVOLUME}
                     console.log(data,"push data")     
                   prevData.push(data)
                   }
@@ -150,9 +166,9 @@ class CoinList extends Component {
                <div className="coinTable-header-nav"
                  style={{ backgroundColor: this.state.bgColorc,borderTop:this.state.borderClrc}}
                  onClick={this.showCoins}>COINS</div>
-                  <div className="coinTable-header-nav"
+                  {/* <div className="coinTable-header-nav"
                    style={{ backgroundColor: this.state.bgColorf,borderTop:this.state.borderClrf }}
-                   onClick={this.showForum}>FORUM</div>
+                   onClick={this.showForum}>FORUM</div> */}
                   <div className="coinTable-header-nav"
                    style={{ backgroundColor: this.state.bgColorn,borderTop:this.state.borderClrn }}
                    onClick={this.showNews}>
@@ -161,14 +177,27 @@ class CoinList extends Component {
                </div>
            {this.state.show===1&&
             <div className="feature-table m-2">
+            {this.state.showCoins==="0"&&
+            <div>
             <CoinListTable data={this.state.data} coinInfo={this.props.topTenCrypto} />
             <div className="coinlist-table-footer">
-            <Link to="/coins/list/USD/1">
-            <button className="view-all-coins-btn">
+            {/* <Link to="/coins/list/USD/1"> */}
+            <button className="view-all-coins-btn" onClick={()=>this.setState({showCoins:"1"})}>
                 View All Coins <i className="fa fa-chevron-down"></i>
             </button>
-            </Link>
+            {/* </Link> */}
             </div>
+            </div>}
+            {this.state.showCoins==="1"&&
+            <div>
+            <CoinListTable data={this.state.data.slice(0,60)} coinInfo={this.props.allCrypto} />
+            <div className="coinlist-table-footer">
+            {/* <Link to="/coins/list/USD/1"> */}
+            <button className="view-all-coins-btn" onClick={()=>this.setState({showCoins:"0"})}>
+                Less All Coins <i className="fa fa-chevron-up"></i>
+            </button>
+            </div>
+            </div>}
             </div>}
            {this.state.show===2&&
             <div className="forum ">
@@ -179,10 +208,31 @@ class CoinList extends Component {
             }
             {this.state.show===3&&
             <div className="news-container">
-                {this.props.forum.slice(0,5).map(data=>
+            {this.state.AllNewsViews==="0"&&
+            <div>
+                {this.props.news.slice(0,5).map(data=>
                 <News news={data}/>
                 )}
+                <div className="coinlist-table-footer">
+                <button className="view-all-coins-btn"onClick={()=>this.setState({AllNewsViews:"1"})} > All News Views
+                <i className="fa fa-chevron-down"></i>
+                </button>
+                </div>
+            </div>}
+            {this.state.AllNewsViews==="1"&&
+               <div>
+               {this.props.news.slice(0,50).map(data=>
+               <News news={data}/>
+               )}
+               <div className="coinlist-table-footer">
+               <button  className="view-all-coins-btn" onClick={()=>this.setState({AllNewsViews:"0"})} > Less News Views
+               <i className="fa fa-chevron-up"></i>
+                </button>
+                </div>
+           </div>
+            }
             </div>
+        
             }
             </div>
         </div>
@@ -200,7 +250,7 @@ CoinList.propsType=({
  const mapStatetoProps=state=>({
      topTenCrypto:state.cryptos.topTenCrypto,
      allCrypto:state.cryptos.allCrypto,
-     forum:state.cryptos.forum
+     news:state.cryptos.news
  })
  
- export default connect(mapStatetoProps,{fetchTopTenCrypto,fetchNews,fetchAllCrypto})(CoinList);
+ export default connect(mapStatetoProps,{fetchTopTenCrypto,fetchNews,fetchAllCrypto,fetchForum})(CoinList);

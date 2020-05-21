@@ -80,9 +80,9 @@ class AllCoinsList extends Component {
         console.log(this.props)
         return ( 
         <div className="allcoins-list-table">
-        <ul className="crpto-tpye-nav-bar">
+        {/* <ul className="crpto-tpye-nav-bar">
             <li>USD</li>
-        </ul>
+        </ul> */}
         <CoinListTable data={this.state.data.slice(0,60)} coinInfo={this.props.allCrypto}/>
     </div>  );
     }

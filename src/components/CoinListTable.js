@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import numeral from "numeral"
 import  NumberFormat from 'react-number-format';
+import {Link} from "react-router-dom"
 class CoinListTable extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      bgColor: "grey"
+      bgColor: ""
     }
   }
   moneyFormat=(labelValue)=>
@@ -43,8 +44,8 @@ class CoinListTable extends Component {
   render() {
     console.log(this.props.data, "child")
     return (
-      <div className="coinListTable">
-        <Table responsive>
+      // <div className="coinListTable">
+        <Table responsive style={{margin:"10px 0"}}>
           <thead style={{borderBottom:"3px solid #00d665"}}>
             <tr className="table-coin-h">
               <th>#</th>
@@ -55,35 +56,46 @@ class CoinListTable extends Component {
               <th style={{textAlign:"end"}}>Mkt. Cap.</th>
               <th>7D Chart(USD)</th>
               <th>Rating</th>
-              <th>Chg. 24H</th>
+              {/* <th>Chg. 24H</th> */}
             </tr>
           </thead>
           <tbody>
              {this.props.data.map((coin,index)=>
-               <tr className="table-coin-t">
-               <td className="index-table">{index+1}</td>
+               <tr className="table-coin-t" >
+               <td className="index-table"><div style={{marginTop:"6.5px",}}>{index+1}</div></td>
+              
                <td style={{display:"flex",}}>
+                 
                  <div className="table-img m-1">
-                   <img className="coin-img"style={{size:"20%",width:"25px",height:"26px",marginRight:"8px"}}src={"https://www.cryptocompare.com"+this.props.coinInfo[index].CoinInfo.ImageUrl} alt="coin-img"/>
+                 <Link to={`/coins/${this.props.coinInfo[index].CoinInfo.Name}/overview/USD`}>
+                   <img className="coin-img"style={{size:"20%",width:"25px",height:"26px",marginRight:"8px",marginTop:"6px"}}src={"https://www.cryptocompare.com"+this.props.coinInfo[index].CoinInfo.ImageUrl} alt="coin-img"/>
+                  </Link>
                  </div>
+                 
                  <div>
                    <p className="coin-name">{this.props.coinInfo[index].CoinInfo.FullName}</p>
                    <p className="coin-fullname">{this.props.coinInfo[index].CoinInfo.Name}</p>
                  </div>
                  </td>
-               <td><NumberFormat value={coin.price} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <button type="button" className="price-btn">{value}</button>} /></td>
-               <td style={{textAlign:"end"}}><span className="dollar">$</span>{this.moneyFormat(coin.vol*coin.price/10)}</td>
-               <td style={{textAlign:"end"}}><span className="dollar">$</span>{this.moneyFormat(coin.topTierVol*coin.price)}</td>
-               <td style={{textAlign:"end"}}><span className="dollar">$</span>{this.moneyFormat(this.props.coinInfo[index].ConversionInfo.Supply*coin.price)}</td>
+               <td ><div style={{verticalAlign:"center",marginTop:"8.5px",}}><NumberFormat value={coin.price} displayType={'text'} thousandSeparator={true} prefix={'$ '} renderText={value => <button type="button" className="price-btn" style={{backgroundColor:coin.priceClr,color:coin.textClr}}>{value}</button>} /></div></td>
+               <td style={{textAlign:"end"}}><div style={{verticalAlign:"center",marginTop:"8.5px"}}><span className="dollar">$</span>{this.moneyFormat(coin.vol*coin.price/10)}</div></td>
+               <td style={{textAlign:"end"}}><div style={{verticalAlign:"center",marginTop:"8.5px"}}><span className="dollar">$</span>{this.moneyFormat(coin.topTierVol*coin.price)}</div></td>
+               <td style={{textAlign:"end"}}><div style={{verticalAlign:"center",marginTop:"8.5px"}}><span className="dollar">$</span>{this.moneyFormat(this.props.coinInfo[index].ConversionInfo.Supply*coin.price)}</div></td>
                <td>
-               <img class="spark-img" src={`https://images.cryptocompare.com/sparkchart/${this.props.coinInfo[index].CoinInfo.Name}/USD/latest.png?ts=1589818800`} alt="change img"/>
+                <div style={{verticalAlign:"center",marginTop:"8.5px"}}>
+                   <img class="spark-img" src={`https://images.cryptocompare.com/sparkchart/${this.props.coinInfo[index].CoinInfo.Name}/USD/latest.png?ts=1589818800`} alt="change img"/>
+               </div>
                </td>
-             <td>{this.props.coinInfo[index].CoinInfo.Rating.Weiss.Rating}</td>
+             <td>
+             <div style={{verticalAlign:"center",marginTop:"8.5px"}}>
+               {this.props.coinInfo[index].CoinInfo.Rating.Weiss.Rating}
+               </div>
+               </td>
              </tr>
              )}
           </tbody>
         </Table>
-      </div>
+      // </div>
     );
   }
 }

@@ -46,8 +46,10 @@
 .coin-name{
   font-weight: bold;
 }
-  .cointainer{
+.cointainer{
     background-color:var(--background-clr);
+    margin-top: 75px;
+    height: auto;
   }
   .homepage-container,.allcoins-list-table{
     margin: 60px;
@@ -62,8 +64,8 @@
     background-color:var(--card-table-background-clr)
   }
   .dollar{
-    font-size: 13.7px; 
-    margin-right: 2.5px;
+    font-size: 14px; 
+     margin-right: 3px;
      margin-bottom: 4px;
   }
   .table-coin-header{
@@ -90,12 +92,20 @@
     background-color: #f3f8ff;
     padding: 5px;
   }
+  .view-all-coins-btn{
+    margin-right: 2px;
+  }
+  .fa-chevron-down {
+    margin-left: 4px;
+    margin-top: 6px;
+  }
   .price-btn{
     width:100%;
     /* margin-left: -10px; */
     /* padding: 2px 35px; */
     border: none;
     border-radius: .2rem;
+    /* background-color: rgb(218, 211, 211); */
   }
   .table-coin-t td{
     padding: .2rem;
