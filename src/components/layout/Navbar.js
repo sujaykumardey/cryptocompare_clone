@@ -8,9 +8,6 @@ import {
 
 import './modal.css';
 
-
-
-
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -44,10 +41,6 @@ handleLogin=(e)=>{
   this.setState({name:'',email:'',password:''})
 
 }
-
-
-
-
 handleSubmit = (e) => {
   e.preventDefault();
   const data = {

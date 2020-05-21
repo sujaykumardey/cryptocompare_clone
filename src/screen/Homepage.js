@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import CoinList from '../components/CoinList'
 function HomePage() {
         return (
-           <section>
+           <section className="homepage-container">
                <CoinList/>
            </section>
           )

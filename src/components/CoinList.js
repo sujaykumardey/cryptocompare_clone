@@ -198,9 +198,9 @@ CoinList.propsType=({
     allCrypto:propsType.array.isRequired
  })
  const mapStatetoProps=state=>({
-     topTenCrypto:state.crypto.topTenCrypto,
-     allCrypto:state.crypto.allCrypto,
-     forum:state.crypto.forum
+     topTenCrypto:state.cryptos.topTenCrypto,
+     allCrypto:state.cryptos.allCrypto,
+     forum:state.cryptos.forum
  })
  
  export default connect(mapStatetoProps,{fetchTopTenCrypto,fetchNews,fetchAllCrypto})(CoinList);

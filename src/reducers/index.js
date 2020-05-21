@@ -1,8 +1,9 @@
 import {combineReducers} from 'redux'
 import coinsReducer from './coinsReducer';
+import postReducer from './postReducer';
 
 
 export default combineReducers({
-    crypto:coinsReducer,
-   
+    cryptos:coinsReducer,
+    crypto:postReducer
 })

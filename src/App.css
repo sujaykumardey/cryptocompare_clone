@@ -49,7 +49,7 @@
   .cointainer{
     background-color:var(--background-clr);
   }
-  .homepage-container{
+  .homepage-container,.allcoins-list-table{
     margin: 60px;
   }
   .crpto-tpye-nav-bar{
@@ -240,6 +240,9 @@
     border: #DEE9F5 solid 1px;
     border-radius: 4px;
 } */
+
+
+/* deepak */
 .coin-short-form{
     background: #F9F9F9;
     float: right

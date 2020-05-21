@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 import { } from '../actions/types';
-import * as actions from '../actions/types'
+// import * as actions from '../actions/types'
 
-=======
 import {FETCH_USER, POST_COIN, DELETE_COIN,DELETE_USER } from '../actions/types';
->>>>>>> feature-clone
 
 const initialState = {
  users:[],

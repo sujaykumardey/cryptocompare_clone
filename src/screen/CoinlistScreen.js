@@ -83,7 +83,7 @@ class AllCoinsList extends Component {
         <ul className="crpto-tpye-nav-bar">
             <li>USD</li>
         </ul>
-        <CoinListTable data={this.state.data} coinInfo={this.props.allCrypto}/>
+        <CoinListTable data={this.state.data.slice(0,60)} coinInfo={this.props.allCrypto}/>
     </div>  );
     }
 }
@@ -93,7 +93,7 @@ AllCoinsList.propsType=({
     allCrypto:propsType.array.isRequired
  })
  const mapStatetoProps=state=>({
-     allCrypto:state.crypto.allCrypto
+     allCrypto:state.cryptos.allCrypto
  })
  
  export default connect(mapStatetoProps,{fetchAllCrypto})(AllCoinsList);
