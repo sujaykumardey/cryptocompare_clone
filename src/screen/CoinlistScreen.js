@@ -26,7 +26,7 @@ class AllCoinsList extends Component {
                 console.log("connected websocket main component");    
                this.setState({ ws: ws });
                 ws.send(JSON.stringify(subReq));
-                that.timeout = 250; // reset timer to 250 on open of websocket connection
+                that.timeout = 2500; // reset timer to 250 on open of websocket connection
                 clearTimeout(connectInterval); // clear Interval on on open of websocket connection
             };    // websocket onclose event listener
             ws.onclose = e => {
@@ -77,12 +77,13 @@ class AllCoinsList extends Component {
             };
       
     render() { 
+        console.log(this.props)
         return ( 
         <div className="allcoins-list-table">
         <ul className="crpto-tpye-nav-bar">
             <li>USD</li>
         </ul>
-        <CoinListTable data={this.state.data}/>
+        <CoinListTable data={this.state.data} coinInfo={this.props.allCrypto}/>
     </div>  );
     }
 }

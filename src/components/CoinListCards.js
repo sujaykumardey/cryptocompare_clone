@@ -3,7 +3,8 @@ class CoinListCards extends Component {
     constructor(){
         super()
       this.state={ws:null,
-                  data:[]
+                  data:[],
+                  priceData:[]
                 }
     }
     componentDidMount(){
@@ -23,10 +24,14 @@ class CoinListCards extends Component {
                 this.setState({ ws: ws });
                 const subRequest = {
                     "action": "SubAdd",
-                    "subs": ["5~CCCAGG~BTC~USD","24~CCCAGG~BTC~USD~H","5~CCCAGG~ETH~USD","24~CCCAGG~ETH~USD~H","5~CCCAGG~LTC~USD","24~CCCAGG~LTC~USD~H","5~CCCAGG~XRP~USD","24~CCCAGG~XRP~USD~H"]
+                    "subs": ["5~CCCAGG~BTC~USD","24~CCCAGG~BTC~USD~H",
+                             "5~CCCAGG~ETH~USD","24~CCCAGG~ETH~USD~H",
+                             "5~CCCAGG~LTC~USD","24~CCCAGG~LTC~USD~H",
+                             "5~CCCAGG~XRP~USD","24~CCCAGG~XRP~USD~H"
+                            ]
                 };
                 ws.send(JSON.stringify(subRequest));
-                that.timeout = 250; // reset timer to 250 on open of websocket connection
+                that.timeout = 5000; // reset timer to 250 on open of websocket connection
                 clearTimeout(connectInterval); // clear Interval on on open of websocket connection
             };    // websocket onclose event listener
             ws.onclose = e => {
@@ -42,7 +47,7 @@ class CoinListCards extends Component {
             ws.onmessage = (event) => {
                 // console.log(event)
                 const message = JSON.parse(event.data)
-                console.log(message,"cards data")
+                console.log(message.TYPE,"cards data")
                 let volume24hour=message.VOLUME24HOUR
                 let coinExist=false;
                 const prevData=this.state.data.map(coin=>{
@@ -70,6 +75,13 @@ class CoinListCards extends Component {
                     this.setState({data:prevData})
                 console.log("Received from Cryptocompare: " + message.FROMSYMBOL,message.TOSYMBOL,volume24hour,message.LASTMARKET,message.LASTVOLUME);         
             // websocket onerror event listener
+          
+                const pri=this.state.priceData
+                if(message.TYPE===24)
+                   {
+                       pri.push(message)
+                   }
+                 this.setState({pricevData:pri})
             }
             ws.onerror = err => {
                 console.error(
@@ -85,7 +97,7 @@ class CoinListCards extends Component {
                 if (!ws || ws.readyState === WebSocket.CLOSED) this.connect(); //check if websocket instance is closed, if so call `connect` function.
             };
     render() { 
-        console.log(this.state.data,"data value")
+        console.log(this.state.priceData,"data value")
         return ( 
             <div className="card-container">
                {this.state.data.length===4&&this.state.data.map(coin=><div className="card">
@@ -96,8 +108,21 @@ class CoinListCards extends Component {
                  <div className="card-price m-1">
                     $ {coin.price} 
                  </div>
-                 <div className="graph-section">graph</div>
-                 <ul className="card-footer">
+                 {/* <div className="graph-section" style={{backgroundColor:"grey",height:"20%"}}> */}
+                  <svg  width="100%">
+                      <path cs="100,100" d="M0.5,27.80215 L16.5,29.06945
+                                      L31.5,27.19265 L47.5,30.22635 L62.5,27.91485 
+                                      L78.5,36.6491 L93.5,38.3856 L109.5,26.858 
+                                      L125.5,12.14605 L140.5,16.13425 L156.5,16.63105
+                                       L171.5,15.63515 L187.5,16.5609 L202.5,26.2761
+                                        L218.5,25.9955 L233.5,48.29055 L249.5,49.5452 
+                                        L265.5,43.6181 L280.5,42.81655 L296.5,39.2688 
+                                        L311.5,39.9841 L327.5,34.43305 L342.5,39.34125
+                                         L358.5,35.37605 L358.5,69.5 L0.5,69.5 L0.5,27.80215 Z"
+                                 fill="#1d8b3a" stroke="#000" fill-opacity="0.4" stroke-width="1" stroke-opacity="0" class="amcharts-graph-fill"></path>
+                  </svg>
+                 {/* </div> */}
+                 <ul className="card-footer" >
                    <li>just now</li>
                    <li>{coin.lastMarket}</li>
                    <li>{coin.lastVol}</li>

@@ -5,14 +5,18 @@ class News extends Component {
     render() { 
         console.log(this.props.news,"news")
         return (
-            <div className="News m-2">
-                <div  sytle={{width: "100px",height: "100px"}}>
-                  <img clasName="news-image" sytle={{width: "100px",height: "100px",size: "30%"}}src={this.props.news.imageurl} alt="news-img"/>
+            <div className="news m-3">
+                <div clasName="news-image">
+                  <img className="news-img"src={this.props.news.imageurl} alt="news-img"></img>
                 </div>
-                <div className="news-conent m-2">
-                   <div className="news-title" style={{color:"#f79a35"}}>{this.props.news.source_info.name}</div>
-                   <h5 className="news-heading" style={{color:"#337ab7"}}>{this.props.news.title}</h5>
-                  <p className="news-info">{this.props.news.body}</p>
+                <div className="news-conent">
+                   <div className="news-title" >{this.props.news.source_info.name}</div>
+                   <h5 className="news-heading">{this.props.news.title}</h5>
+                   <p  className="news-info"numberOfLines={1}>
+                 {this.props.news.body.length < 200
+                ? `${this.props.news.body}`
+                : `${this.props.news.body.substring(0, 200)}...`}
+                 </p>
                    <div style={{color: "#999",fontSize:"13px"}}>Categories:{this.props.news.categories}</div>
                 </div>
             </div>

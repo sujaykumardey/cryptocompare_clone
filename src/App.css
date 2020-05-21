@@ -28,9 +28,24 @@
     font-size: calc(10px + 2vmin);
     color: white;
   } */
-  .bitcoin-img{
-    margin: 5px 20%;
+  .coinListTable{
+    text-align: center;
+    font-size: 15px;
+    /* vertical-align: center; */
   }
+  .bitcoin-img{
+    /* margin: 5px 20%; */
+  }
+  .coin-name,.coin-fullname{ 
+    margin-top: 0;
+    margin-bottom:0px;
+    font-size: 15px;
+    /* font-weight: bold; */
+    text-align: start;
+}
+.coin-name{
+  font-weight: bold;
+}
   .cointainer{
     background-color:var(--background-clr);
   }
@@ -46,12 +61,19 @@
   .coin-list-table{
     background-color:var(--card-table-background-clr)
   }
+  .dollar{
+    font-size: 13.7px; 
+    margin-right: 2.5px;
+     margin-bottom: 4px;
+  }
+  .table-coin-header{
+    border-top-color: none;
+  }
   .coinTable-header{
     display: flex;
     /* justify-content: space-around; */
     
-  }
-  .coinTable-header{
+    border-top-color: none;
     background-color: var(--background-clr);
   }
   .coinTable-header-nav{
@@ -60,11 +82,43 @@
     text-align: center;
    border-top-left-radius: .4rem;
    border-top-right-radius:0.4rem ;
+   /* border-left:1px solid rgb(203, 210, 211); */
+   /* border-right:1px solid rgb(203, 210, 211); */
+  
   }
   .coinlist-table-footer{
     background-color: #f3f8ff;
     padding: 5px;
   }
+  .price-btn{
+    width:100%;
+    /* margin-left: -10px; */
+    /* padding: 2px 35px; */
+    border: none;
+    border-radius: .2rem;
+  }
+  .table-coin-t td{
+    padding: .2rem;
+    text-align: center;
+    vertical-align: center;
+    border-bottom: 1px solid #dee2e6;
+    border-right: 1px solid #f4f6f8;
+    margin:0 5px;
+    /* margin-top: 4px; */
+    /* color: cadetblue; */
+  }
+  .table-coin-h th{
+    padding: .2rem;
+    vertical-align: center;
+    border-top:none ;
+  }
+  .table-header{
+    /* text-align: center; */
+  }
+  /* .coin-img{
+    size:"20%";
+    width:"25px"
+    height:"26px"} */
   .view-all-coins-btn{
     margin:8px 38%;
     padding: 5px 30px;
@@ -147,15 +201,38 @@
   }
 
   /* news */
-  .News{
+  .news-container{
+    /* border: .25px solid rgb(155, 152, 152); */
+    /* border-top: none; */
+    /* z-index: 1; */
+  }
+  .news-conent{
+    /* background-color: rgb(29,139,58); */
+  }
+  .news{
     display: flex;
-    
+    height: 160px;
+    /* width: auto; */
+    margin: 8px;
+   
   }
- .news-image{
-    margin-left: 0px;
-    margin-right: 47px;
-    background-color: rgb(29,139,58);
-    width: 170px;
-    height: 168px;
-    size: 20%;
+
+  .news-info{
+    font-size: 14px;
   }
+  .news-title{
+    color:#f79a35;
+    font-size: 13.5px;
+  }
+  .news-heading{
+    color:#337ab7;
+  }
+  .news-img{
+    border-radius:.5rem;
+    /* padding: .5em; */
+    width: 130px;
+    height: 70%;
+    margin-right: 13px;
+    /* margin-top: none; */
+  }
+  

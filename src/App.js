@@ -15,10 +15,7 @@ export default class App extends Component {
       <Provider store={store}>
         <div className="cointainer">
         <Router>
-          <Header />
-          <div className="bitcoin-img">
-            <img src={bitcoinDsktp} alt="image"/>
-          </div>     
+          <Header />    
           <Switch>
             <Route exact path="/" component={Homepage} />
             <Route path="/coins/list/USD/1" component={CoinlistScreen}/>

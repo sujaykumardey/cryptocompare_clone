@@ -33,7 +33,7 @@ class CoinList extends Component {
         }
         this.connect();
         }
-        timeout = 250; // Initial timeout duration as a class variable/**
+        timeout = 2500; // Initial timeout duration as a class variable/**
         //  * @function connect
         //  * This function establishes the connect with the websocket and also ensures constant reconnection if connection closes
         //  *
@@ -44,22 +44,25 @@ class CoinList extends Component {
             ws.onopen = () => {
                 console.log("connected websocket main component");    
                this.setState({ ws: ws });
+               const subs=this.props.topTenCrypto.map(crypto=>{
+                   return crypto.CoinInfo.Name
+               })
                 var subRequest = {
                     "action":`${this.state.actionVal}`,
-                    "subs":["11~BTC","21~BTC","5~CCCAGG~BTC~USD",
-                           "11~ETH","21~ETH","5~CCCAGG~ETH~USD",
-                           "11~BCH","21~BCH","5~CCCAGG~BCH~USD",
-                           "11~BSV","21~BSV","5~CCCAGG~BSV~USD",
-                           "11~XRP","21~XRP","5~CCCAGG~XRP~USD",
-                           "11~EOS","21~EOS","5~CCCAGG~EOS~USD",
-                           "11~LTC","21~LTC","5~CCCAGG~LTC~USD",
-                           "11~ETC","21~ETC","5~CCCAGG~ETC~USD",
-                           "11~LINK","21~LINK","5~CCCAGG~LINK~USD",
-                           "11~TRX","21~TRX","5~CCCAGG~TRX~ETH",
-                           "5~CCCAGG~TRX~USD"]
+                    "subs":[`11~${subs[0]}`,`21~${subs[0]}`,`5~CCCAGG~${subs[0]}~USD`,
+                            `11~${subs[1]}`,`21~${subs[1]}`,`5~CCCAGG~${subs[1]}~USD`,
+                            `11~${subs[2]}`,`21~${subs[2]}`,`5~CCCAGG~${subs[2]}~USD`,
+                            `11~${subs[3]}`,`21~${subs[3]}`,`5~CCCAGG~${subs[3]}~USD`,
+                            `11~${subs[4]}`,`21~${subs[4]}`,`5~CCCAGG~${subs[4]}~USD`,
+                            `11~${subs[5]}`,`21~${subs[5]}`,`5~CCCAGG~${subs[5]}~USD`,
+                            `11~${subs[6]}`,`21~${subs[6]}`,`5~CCCAGG~${subs[6]}~USD`,
+                            `11~${subs[7]}`,`21~${subs[7]}`,`5~CCCAGG~${subs[7]}~USD`,
+                            `11~${subs[8]}`,`21~${subs[8]}`,`5~CCCAGG~${subs[8]}~USD`,
+                            `11~${subs[9]}`,`21~${subs[9]}`,`5~CCCAGG~${subs[9]}~USD`,
+                    ]
                 } 
                 ws.send(JSON.stringify(subRequest));
-                that.timeout = 250; // reset timer to 250 on open of websocket connection
+                that.timeout = 2500; // reset timer to 250 on open of websocket connection
                 clearTimeout(connectInterval); // clear Interval on on open of websocket connection
             };    // websocket onclose event listener
             ws.onclose = e => {
@@ -136,7 +139,6 @@ class CoinList extends Component {
                 bgColorf:"",borderClrf:"",
                 bgColorn:"",borderClrn:"",
                 })
-          
             }
     render() { 
         console.log(this.state,"BTC DATA")
@@ -159,7 +161,6 @@ class CoinList extends Component {
                </div>
            {this.state.show===1&&
             <div className="feature-table m-2">
-               Featured The World's #1 Online Crypto Casino. Wager 5 Mbtc - Get 100 Free Spins
             <CoinListTable data={this.state.data} coinInfo={this.props.topTenCrypto} />
             <div className="coinlist-table-footer">
             <Link to="/coins/list/USD/1">
@@ -173,10 +174,11 @@ class CoinList extends Component {
             <div className="forum ">
                 <Forum/>
                 <Forum/>
+                <Forum/>
             </div>
             }
             {this.state.show===3&&
-            <div className="news-container ">
+            <div className="news-container">
                 {this.props.forum.slice(0,5).map(data=>
                 <News news={data}/>
                 )}
