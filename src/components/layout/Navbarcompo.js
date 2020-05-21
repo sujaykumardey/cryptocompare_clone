@@ -70,7 +70,7 @@ class NavbarCompo extends Component {
               {this.state.user === undefined ? null : (
                 <li className="btn btn-default nav-item dropdown">
                   <a
-                     type="button"
+                    type="button"
                     className="nav-link dropdown-toggle"
                     data-toggle="dropdown"
                   >
@@ -82,14 +82,12 @@ class NavbarCompo extends Component {
                   </a>
                   <ul className="dropdown-menu" role="menu">
                     <li>
-                      <a href="/quiz/" >
+                      <a href="/quiz/">
                         <i className="fa fa-question"></i> Quiz
                       </a>
                     </li>
                     <li>
-                      <a
-                        className='profile' href={`${this.state.user}`}
-                      >
+                      <a className="profile" href={`${this.state.user}`}>
                         <i className="fa fa-user"></i> View My Profile
                       </a>
                     </li>
@@ -109,7 +107,11 @@ class NavbarCompo extends Component {
                       </a>
                     </li>
                     <li className="dropdown">
-                      <a href="" ng-click="switchLights()" className="ng-binding">
+                      <a
+                        href=""
+                        ng-click="switchLights()"
+                        className="ng-binding"
+                      >
                         <i className="fa fa-lightbulb-o"></i>Turn Off
                       </a>
                     </li>
