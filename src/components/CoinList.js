@@ -16,12 +16,12 @@ class CoinList extends Component {
             // news:[],
             show:1,
             actionVal:"SubAdd",
-            bgColorc: "white",borderClrc:"3px solid #00d665",
+            bgColorc:"white",borderClrc:"3px solid #00d665",
             bgColorf:"",borderClrf:"",
             bgColorn:"",borderClrn:"",
         }
     }
-   
+    
     componentDidMount(){
         this.props.fetchTopTenCrypto()
        this.props.fetchNews()

@@ -1,0 +1,22 @@
+.modal-body{
+    background-color:rgb(92, 232, 235);
+    height: 400px;
+    
+}
+
+.text{
+    color:rgb(7, 7, 7);
+    font-weight: 900;
+}
+
+.prefix{
+    color: honeydew;
+    margin-right: 5px;
+}
+
+
+.btn-outline-info{
+    font-size: 20px;
+    border: none;
+}
+

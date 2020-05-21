@@ -1,0 +1,38 @@
+.footer {
+  font-size: 14px;
+  background-color: rgb(27, 24, 24);
+}
+
+.nav-header-all {
+  font-size: 3px;
+  color: rgb(56, 248, 56);
+}
+.footer-text {
+  text-decoration: none;
+  color: white;
+  margin-bottom: 20px;
+}
+h4 {
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+a {
+  color: white;
+}
+
+.icon-footer {
+  font-size: 25px;
+
+  padding: 10px 10px 10px 10px;
+  background-color: black;
+  border: 0.02px solid rgb(56, 9, 224);
+}
+
+li {
+  list-style-type: none;
+  margin-bottom: 5px;
+}
+.love {
+  color: red;
+}
