@@ -8,10 +8,13 @@ import Header from "./components/Header"
 import "./App.css"
 import Footer from './components/Footer'
 import CoinlistScreen from './screen/CoinlistScreen';
-import bitcoinDsktp from "./images/bitcoin_english_dsktp.gif"
+import CoinDetailsScreen from './screen/coinDetailsScreen'
+
+
 export default class App extends Component {
-  render() {
+  render () {
     return (
+
       <Provider store={store}>
         <div className="cointainer">
         <Router>
@@ -19,17 +22,12 @@ export default class App extends Component {
           <Switch>
             <Route exact path="/" component={Homepage} />
             <Route path="/coins/list/USD/1" component={CoinlistScreen}/>
+            <Route path="/coins/list/coinsDetails" component={CoinDetailsScreen}/>
           </Switch>
           </Router>
           <Footer/>
         </div>
       </Provider>
     );
-  }
 }
-
-
-
-
-
-
+}
