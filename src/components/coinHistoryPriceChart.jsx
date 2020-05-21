@@ -356,7 +356,7 @@ class CoinHistoryPriceChart extends Component {
           name: 'CCCAGG Bitcoin Price',
           data: areaData,
           color: '#e8eef4',
-          pointRange: 4 * 24 * 3600 * 1000,
+          
         })
         series.push({
           type: 'column',
@@ -364,7 +364,7 @@ class CoinHistoryPriceChart extends Component {
           name: 'Volume To',
           data: columnData,
           color: '#457dac',
-          pointRange: 3 * 24 * 3600 * 1000,
+          
         })
 
         this.setState({
