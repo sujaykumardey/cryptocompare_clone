@@ -49,12 +49,12 @@ class CoinListTable extends Component {
           <thead style={{borderBottom:"3px solid #00d665"}}>
             <tr className="table-coin-h">
               <th>#</th>
-              <th >Coin</th>
-              <th>Price</th>
+              <th  style={{textAlign:"center"}} >Coin</th>
+              <th  style={{textAlign:"center"}}>Price</th>
               <th style={{textAlign:"end"}}>Total Vol</th>
               <th style={{textAlign:"end"}}>Top Tier Vol</th>
               <th style={{textAlign:"end"}}>Mkt. Cap.</th>
-              <th>7D Chart(USD)</th>
+              <th style={{textAlign:"center"}}>7D Chart(USD)</th>
               <th>Rating</th>
               {/* <th>Chg. 24H</th> */}
             </tr>
@@ -78,7 +78,7 @@ class CoinListTable extends Component {
                  </div>
                  </td>
                <td ><div style={{verticalAlign:"center",marginTop:"8.5px",}}><NumberFormat value={coin.price} displayType={'text'} thousandSeparator={true} prefix={'$ '} renderText={value => <button type="button" className="price-btn" style={{backgroundColor:coin.priceClr,color:coin.textClr}}>{value}</button>} /></div></td>
-               <td style={{textAlign:"end"}}><div style={{verticalAlign:"center",marginTop:"8.5px"}}><span className="dollar">$</span>{this.moneyFormat(coin.vol*coin.price/10)}</div></td>
+               <td style={{textAlign:"end"}}><div style={{verticalAlign:"center",marginTop:"8.5px"}}><span className="dollar">$</span>{this.moneyFormat(coin.vol*coin.price)}</div></td>
                <td style={{textAlign:"end"}}><div style={{verticalAlign:"center",marginTop:"8.5px"}}><span className="dollar">$</span>{this.moneyFormat(coin.topTierVol*coin.price)}</div></td>
                <td style={{textAlign:"end"}}><div style={{verticalAlign:"center",marginTop:"8.5px"}}><span className="dollar">$</span>{this.moneyFormat(this.props.coinInfo[index].ConversionInfo.Supply*coin.price)}</div></td>
                <td>

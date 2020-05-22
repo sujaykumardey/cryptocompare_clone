@@ -4,11 +4,11 @@ import CoinListTable from './CoinListTable'
 import Forum from './Forum'
 import News from './News';
 import propsType from 'prop-types'
-import { subReq} from "../components/CoinsSubs"
+// import { subReq} from "../components/CoinsSubs"
 import {fetchTopTenCrypto,fetchNews,fetchAllCrypto,fetchForum} from "../actions/coinsActions"
 // import{fetchNews,fetchForum} from "../assets/credentials"
 import {connect} from "react-redux"
-// import{Link} from "react-router-dom"
+import{Link} from "react-router-dom"
 class CoinList extends Component {
     constructor(){
         super()
@@ -53,7 +53,7 @@ class CoinList extends Component {
                    return crypto.CoinInfo.Name
                })
                 var subRequest = {}
-                if(this.state.showCoins==="0")
+                // if(this.state.showCoins==="0")
                     subRequest={
                     "action":`${this.state.actionVal}`,
                     "subs":[`11~${subs[0]}`,`21~${subs[0]}`,`5~CCCAGG~${subs[0]}~USD`,
@@ -68,9 +68,9 @@ class CoinList extends Component {
                             `11~${subs[9]}`,`21~${subs[9]}`,`5~CCCAGG~${subs[9]}~USD`,
                     ]
                 } 
-                if(this.state.showCoins==="1"){
-                    subRequest=subReq
-                }
+                // if(this.state.showCoins==="1"){
+                //     subRequest=subReq
+                // }
                 ws.send(JSON.stringify(subRequest));
                 that.timeout = 2500; // reset timer to 250 on open of websocket connection
                 clearTimeout(connectInterval); // clear Interval on on open of websocket connection
@@ -105,11 +105,11 @@ class CoinList extends Component {
                     else if(message.TYPE==="21"&&coin.sym===message.SYMBOL&&message.TOPTIERFULLVOLUME!==undefined)
                          coin.topTierVol=message.TOPTIERFULLVOLUME
                     else if(message.TYPE==="11"&&coin.sym===message.SYMBOL&&message.FULLVOLUME!==undefined)
-                         coin.topTierVol=message.FULLVOLUME
+                         coin.vol=message.FULLVOLUME
                     return coin
                  })  
                  if(!coinExist&&message.TYPE==="5"&&message.PRICE!==undefined)
-                  { const data={ vol:message.VOLUME24HOURTO,sym:message.FROMSYMBOL,tosym:message.TOSYMBOL,price:message.PRICE,priceClr:"#f5f5f5",textClr:"black",topTierVol:message.TOPTIERFULLVOLUME}
+                  { const data={ vol:message.VOLUME24HOURTO,sym:message.FROMSYMBOL,tosym:message.TOSYMBOL,price:message.PRICE,priceClr:"rgb(231, 224, 224)",textClr:"black",topTierVol:message.TOPTIERFULLVOLUME}
                     console.log(data,"push data")     
                   prevData.push(data)
                   }
@@ -181,23 +181,22 @@ class CoinList extends Component {
             <div>
             <CoinListTable data={this.state.data} coinInfo={this.props.topTenCrypto} />
             <div className="coinlist-table-footer">
-            {/* <Link to="/coins/list/USD/1"> */}
-            <button className="view-all-coins-btn" onClick={()=>this.setState({showCoins:"1"})}>
+            <Link to="/coins/list/USD/1">
+            <button className="view-all-coins-btn">
                 View All Coins <i className="fa fa-chevron-down"></i>
             </button>
-            {/* </Link> */}
+            </Link>
             </div>
             </div>}
-            {this.state.showCoins==="1"&&
+            {/* {this.state.showCoins==="1"&&
             <div>
             <CoinListTable data={this.state.data.slice(0,60)} coinInfo={this.props.allCrypto} />
             <div className="coinlist-table-footer">
-            {/* <Link to="/coins/list/USD/1"> */}
             <button className="view-all-coins-btn" onClick={()=>this.setState({showCoins:"0"})}>
                 Less All Coins <i className="fa fa-chevron-up"></i>
             </button>
             </div>
-            </div>}
+            </div>} */}
             </div>}
            {this.state.show===2&&
             <div className="forum ">
@@ -253,4 +252,4 @@ CoinList.propsType=({
      news:state.cryptos.news
  })
  
- export default connect(mapStatetoProps,{fetchTopTenCrypto,fetchNews,fetchAllCrypto,fetchForum})(CoinList);
+ export default connect(mapStatetoProps,{fetchTopTenCrypto,fetchNews,fetchAllCrypto,fetchForum})(CoinList)

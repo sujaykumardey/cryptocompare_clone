@@ -21,7 +21,7 @@ export default class App extends Component {
           <Header />    
           <Switch>
             <Route exact path="/" component={Homepage} />
-            {/* <Route path="/coins/list/USD/1" component={CoinlistScreen}/> */}
+            <Route path="/coins/list/USD/1" component={CoinlistScreen}/>
             <Route path="/coins/:name/overview/USD" component={CoinDetailsScreen}/>
             <Route exact path="/portfolio" component={Portfolio} />
             <Route exact path="/portfolioauth" component={Portfoliosignin} />

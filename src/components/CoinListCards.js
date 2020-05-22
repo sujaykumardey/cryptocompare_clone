@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import numeral from "numeral"
 class CoinListCards extends Component {
     constructor(){
         super()
@@ -9,6 +10,7 @@ class CoinListCards extends Component {
     }
     componentDidMount(){
         this.connect();
+        this.getGraphData()
         console.log(this.connect,"connect return")
         }
         timeout = 250; // Initial timeout duration as a class variable/**
@@ -96,19 +98,22 @@ class CoinListCards extends Component {
                 const { ws } = this.state;
                 if (!ws || ws.readyState === WebSocket.CLOSED) this.connect(); //check if websocket instance is closed, if so call `connect` function.
             };
+            getGraphData=()=>{
+                
+            }
     render() { 
         console.log(this.state.priceData,"data value")
         return ( 
             <div className="card-container">
                {this.state.data.length===4&&this.state.data.map(coin=><div className="card">
                  <div className="card-header1 m-1">
-                 {coin.sym}-{coin.tosym}
-                 <span className="vol" style={{fontSize:11,paddingLeft:"70px",fontWeight:"none"}}>Vol:{coin.vol}</span>
+                  <span style={{textAlign:"start"}}>{coin.sym}-{coin.tosym}</span>
+                 <span className="vol" style={{fontSize:11,textAlign:"end",paddingLeft:"30%",fontWeight:"none"}}>Vol: $ {coin.vol.toFixed(2)}</span>
                  </div>
                  <div className="card-price m-1">
                     $ {coin.price} 
                  </div>
-                 {/* <div className="graph-section" style={{backgroundColor:"grey",height:"20%"}}> */}
+                 <div className="graph-section" style={{height:"60px"}}>
                   <svg  width="100%">
                       <path cs="100,100" d="M0.5,27.80215 L16.5,29.06945
                                       L31.5,27.19265 L47.5,30.22635 L62.5,27.91485 
@@ -121,7 +126,7 @@ class CoinListCards extends Component {
                                          L358.5,35.37605 L358.5,69.5 L0.5,69.5 L0.5,27.80215 Z"
                                  fill="#1d8b3a" stroke="#000" fill-opacity="0.4" stroke-width="1" stroke-opacity="0" class="amcharts-graph-fill"></path>
                   </svg>
-                 {/* </div> */}
+                 </div>
                  <ul className="card-footer" >
                    <li>just now</li>
                    <li>{coin.lastMarket}</li>
