@@ -84,7 +84,7 @@
   margin-left: 10px;
 }
 .header-portfolio-add-coin {
-  background-color: #65e9e9;
+  background-color: #e6eff5;
 }
 
 .add-coin-btn {
@@ -113,7 +113,7 @@
   margin: 10px 30px 20px 10px;
 }
 thead {
-  background-color: #9ceeee;
+  /* background-color: #9ceeee; */
 }
 
 .button-coin-end {

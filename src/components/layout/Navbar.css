@@ -110,18 +110,19 @@ button{
 }
 
 .btn-signup{
-    background: rgb(147, 245, 247);
-    background: radial-gradient(circle, rgba(18,64,65,1) 22%, rgba(32,96,213,1) 73%);
+    background: #5cb85c;
+    /* background: radial-gradient(circle, rgba(18,64,65,1) 22%, rgba(32,96,213,1) 73%); */
     border-radius: 12px;
     padding:5px 0 5px 0;
     color:white;
 }
 .btn-login{
-    background: rgb(18,64,65);
-    background: radial-gradient(circle, rgba(18,64,65,1) 22%, rgba(32,96,213,1) 73%);
+    /* background: rgb(18,64,65);
+    background: radial-gradient(circle, rgba(18,64,65,1) 22%, rgba(32,96,213,1) 73%); */
     border-radius: 12px;
     padding:5px 0 5px 0;
     color:white;
+    background: #5cb85c;
 }
 
 .icon-button{
@@ -136,5 +137,5 @@ button{
 }
 
 #nav-headers{
-    background-color: #7ecc98
+    background-color: #0a1623
 }
