@@ -47,9 +47,15 @@ class AllCoinsList extends Component {
                 const prevData=this.state.data.map(coin=>{
                     console.log(coin)
                     if(message.TYPE==="5"&&coin.sym===message.FROMSYMBOL&&message.PRICE!==undefined)
-                    {coin.price=message.PRICE;
-                          coinExist=true;
-                        console.log(coin.price,message.FROMSYMBOL,"inside price")}
+                    {if(coin.price<message.PRICE)
+                        { coin.priceClr="#A11B0A"
+                          coin.textClr="white"}
+                     if(coin.price>message.PRICE)
+                         {coin.priceClr="#3D9400"
+                         coin.textClr="white"}
+                     coin.price=message.PRICE;
+                       coinExist=true;
+                     console.log(coin.price,message.FROMSYMBOL,"inside price")}
                     else if(message.TYPE==="21"&&coin.sym===message.SYMBOL&&message.TOPTIERFULLVOLUME!==undefined)
                          coin.topTierVol=message.TOPTIERFULLVOLUME
                     else if(message.TYPE==="11"&&coin.sym===message.SYMBOL&&message.FULLVOLUME!==undefined)
@@ -80,9 +86,9 @@ class AllCoinsList extends Component {
         console.log(this.props)
         return ( 
         <div className="allcoins-list-table">
-        <ul className="crpto-tpye-nav-bar">
+        {/* <ul className="crpto-tpye-nav-bar">
             <li>USD</li>
-        </ul>
+        </ul> */}
         <CoinListTable data={this.state.data.slice(0,60)} coinInfo={this.props.allCrypto}/>
     </div>  );
     }

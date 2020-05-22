@@ -11,7 +11,7 @@ class News extends Component {
                 </div>
                 <div className="news-conent">
                    <div className="news-title" >{this.props.news.source_info.name}</div>
-                   <h5 className="news-heading">{this.props.news.title}</h5>
+                   <a className="news-heading"href={this.props.news.url} rel="noopener noreferrer" target="_blank">{this.props.news.title}</a>
                    <p  className="news-info"numberOfLines={1}>
                  {this.props.news.body.length < 200
                 ? `${this.props.news.body}`

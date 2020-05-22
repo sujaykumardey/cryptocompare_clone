@@ -47,157 +47,175 @@
 .coin-name {
   font-weight: bold;
 }
-.cointainer {
-  background-color: var(--background-clr);
-}
-.homepage-container,
-.allcoins-list-table {
-  margin: 60px;
-}
-.crpto-tpye-nav-bar {
-  list-style: none;
-}
-.allcoins-list-table {
-  background-color: var(--card-table-background-clr);
-}
-.coin-list-table {
-  background-color: var(--card-table-background-clr);
-}
-.dollar {
-  font-size: 13.7px;
-  margin-right: 2.5px;
-  margin-bottom: 4px;
-}
-.table-coin-header {
-  border-top-color: none;
-}
-.coinTable-header {
-  display: flex;
-  /* justify-content: space-around; */
-
-  border-top-color: none;
-  background-color: var(--background-clr);
-}
-.coinTable-header-nav {
-  padding: 9px;
-  width: 33.3%;
-  text-align: center;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  /* border-left:1px solid rgb(203, 210, 211); */
-  /* border-right:1px solid rgb(203, 210, 211); */
-}
-.coinlist-table-footer {
-  background-color: #f3f8ff;
-  padding: 5px;
-}
-.price-btn {
-  width: 100%;
-  /* margin-left: -10px; */
-  /* padding: 2px 35px; */
-  border: none;
-  border-radius: 0.2rem;
-}
-.table-coin-t td {
-  padding: 0.2rem;
-  text-align: center;
-  vertical-align: center;
-  border-bottom: 1px solid #dee2e6;
-  border-right: 1px solid #f4f6f8;
-  margin: 0 5px;
-  /* margin-top: 4px; */
-  /* color: cadetblue; */
-}
-.table-coin-h th {
-  padding: 0.2rem;
-  vertical-align: center;
-  border-top: none;
-}
-.table-header {
-  /* text-align: center; */
-}
-/* .coin-img{
+.cointainer{
+    background-color:var(--background-clr);
+    margin-top: 75px;
+    height: auto;
+  }
+  .homepage-container,.allcoins-list-table{
+    margin: 60px;
+  }
+  .crpto-tpye-nav-bar{
+    list-style: none;
+  }
+  .allcoins-list-table{
+    background-color: var(--card-table-background-clr);
+    margin-top: 60px;
+  }
+  .coin-list-table{
+    background-color:var(--card-table-background-clr)
+  }
+  .dollar{
+    /* font-size: 14px;  */
+     margin-right: 3px;
+     margin-bottom: 4px;
+  }
+  .table-coin-header{
+    border-top-color: none;
+  }
+  .coinTable-header{
+    display: flex;
+    /* justify-content: space-around; */
+    
+    border-top-color: none;
+    background-color: var(--background-clr);
+  }
+  .coinTable-header-nav{
+    padding:9px;
+    width: 33.3%;
+    text-align: center;
+   border-top-left-radius: .4rem;
+   border-top-right-radius:0.4rem ;
+   /* border-left:1px solid rgb(203, 210, 211); */
+   /* border-right:1px solid rgb(203, 210, 211); */
+  
+  }
+  .coinlist-table-footer{
+    background-color: #f3f8ff;
+    padding: 5px;
+  }
+  .view-all-coins-btn{
+    margin-right: 2px;
+  }
+  .fa-chevron-down {
+    margin-left: 4px;
+    margin-top: 6px;
+  }
+  .price-btn{
+    width:100%;
+    /* margin-left: -10px; */
+    /* padding: 2px 35px; */
+    border: none;
+    border-radius: .2rem;
+    /* background-color: rgb(218, 211, 211); */
+  }
+  .table-coin-t td{
+    padding: .2rem;
+    text-align: center;
+    vertical-align: center;
+    border-bottom: 1px solid #dee2e6;
+    border-right: 1px solid #f4f6f8;
+    margin:0 5px;
+    /* margin-top: 4px; */
+    /* color: cadetblue; */
+  }
+  .table-coin-h th{
+    padding: .2rem;
+    vertical-align: center;
+    border-top:none ;
+  }
+  .table-header{
+    /* text-align: center; */
+  }
+  /* .coin-img{
     size:"20%";
     width:"25px"
     height:"26px"} */
-.view-all-coins-btn {
-  margin: 8px 38%;
-  padding: 5px 30px;
-  background-color: #ffffff;
-  border: 1px solid #ececec;
-  color: #363d47;
-}
-.header-nav-bar {
-  background-color: var(--header-background-clr);
-  padding: 14px;
-  display: flex;
-}
-.nav-list {
-  color: white;
-  list-style: none;
-  margin: 5px;
-}
-.footer {
-  background-color: var(--header-background-clr);
-  margin-top: 100%;
-  height: 35vh;
-}
-.App-link {
-  color: #61dafb;
-}
+  .view-all-coins-btn{
+    margin:8px 38%;
+    padding: 5px 30px;
+    background-color: #FFFFFF;
+    border: 1px solid #ececec;
+    color: #363D47;
+    /* color:rgb(231, 224, 224): */
+  }
+    .header-nav-bar{
+      background-color:var(--header-background-clr);
+      padding:14px;
+      display: flex;
+    }
+    .nav-list{
+      color: white;
+      list-style: none;
+      margin: 5px;
+    }
+  .footer{
+    background-color: var(--header-background-clr);
+    margin-top: 100%;
+    height: 35vh;
 
-.card-container {
-  display: flex;
-  /* margin-top: 15px; */
-  margin-bottom: 20px;
-  height: 180px;
-  justify-content: space-between;
-}
-.card {
-  /* font-size: small; */
-  /* margin: 2px; */
-  width: 24%;
-  background-color: var(--card-table-background-clr);
-}
-.card-header1 {
-  font-size: 16px;
-  font-weight: bold;
-}
-.card-footer {
-  background-color: rgb(29, 139, 58);
-  margin-top: auto;
-  list-style: none;
-  margin-bottom: 0;
-  padding: 8px;
-  display: flex;
-  color: #fff;
-  font-size: 14px;
-  justify-content: space-between;
-}
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
+  .App-link {
+    color: #61dafb;
   }
-}
-/* forum */
-.forum-header {
-  display: flex;
-}
-.list-of-reaction {
-  width: 300px;
-  display: flex;
-  list-style: none;
-  justify-items: auto;
-  justify-content: space-between;
-}
-.forum-footer {
-  display: flex;
-  justify-content: space-between;
-  margin: 2px 10px;
-}
+  
+  .card-container{
+    display: flex;
+    margin-top: 65px;
+    margin-bottom: 20px;
+    /* border-top: 30px transparent; */
+    padding-top:40px ;
+    /* height:200px; */
+    justify-content: space-between;
+  }
+  .card{
+    /* font-size: small; */
+    /* margin-top: 40px; */
+    margin-bottom: 20px;
+    width: 24%;
+    height: auto;
+    background-color:var(--card-table-background-clr);
+  
+  }
+  .card-header1{
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .card-footer{
+    background-color: rgb(29,139,58);
+    margin-top:0;
+    list-style: none;
+    margin-bottom: 0;
+    padding: 8px;
+    display: flex;
+    color: #fff;
+    font-size: 14px;
+    justify-content: space-between;
+  }
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  /* forum */
+  .forum-header{
+    display: flex;
+  }
+  .list-of-reaction{
+    width: 300px;
+    display: flex;
+    list-style: none;
+    justify-items: auto;
+    justify-content: space-between;
+  }
+  .forum-footer{
+    display: flex;
+    justify-content: space-between;
+    margin: 2px 10px;
+  }
 
 /* news */
 .news-container {
