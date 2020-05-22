@@ -1,4 +1,4 @@
-import {FETCH_CRYPTO,FETCH_ALLCRYPTO,FETCH_FORUM, FETCH_NEWS} from './types';
+import {FETCH_CRYPTO,FETCH_ALLCRYPTO,FETCH_FORUM,FETCH_TEN_COIN,FETCH_NEWS} from './types';
 // import {api} from '../assets/credentials';
 
 export const fetchTopTenCrypto= () => (dispatch) => {
@@ -39,6 +39,15 @@ export const fetchNews=()=>(dispatch)=>{
       .then(news=>dispatch({
         type:FETCH_NEWS,
         payload:news.Data
+      })
+      ) 
+}
+export const fetchCoinDetail=()=>(dispatch)=>{
+  fetch("https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,BCH,EOS,XRP,BSV,OMG,KNC,ETC,LTC&tsyms=USD&key=be0c6c7da1dfcc09d10b8818d43457b3d83b8cdf8c85d482072715a0e7043bd9")
+      .then(res=>res.json())
+      .then(news=>dispatch({
+        type:FETCH_TEN_COIN,
+        payload:news
       })
       ) 
 }

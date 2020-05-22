@@ -58,7 +58,7 @@ class CoinInfoProfile extends Component {
               className=' w-100 btn btn-labeled add-to-portfolio text-white'
             >
               <span className='btn-label'>
-                <i className='fa fa-bar-chart'></i>
+                <i className='fa fa-home'></i>
               </span>
               + Portfolio
             </button>

@@ -1,10 +1,11 @@
-import {  FETCH_CRYPTO,FETCH_ALLCRYPTO,FETCH_FORUM, FETCH_NEWS} from '../actions/types';
+import {  FETCH_CRYPTO,FETCH_ALLCRYPTO,FETCH_FORUM,FETCH_TEN_COIN,FETCH_NEWS} from '../actions/types';
 
 const initialState = {
   topTenCrypto:[],
   allCrypto:[],
   forum:[],
   news:[],
+  tencoin:[]
 };
 
 export default function (state = initialState, action) {
@@ -29,6 +30,11 @@ export default function (state = initialState, action) {
             ...state,
             news:action.payload
          }
+         case FETCH_TEN_COIN:
+          return{
+             ...state,
+             tencoin:action.payload
+          }
        default:
       return state;
   }

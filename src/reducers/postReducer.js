@@ -1,11 +1,13 @@
-import { } from '../actions/types';
-// import * as actions from '../actions/types'
-
-import {FETCH_USER, POST_COIN, DELETE_COIN,DELETE_USER } from '../actions/types';
+import {
+  FETCH_USER,
+  POST_COIN,
+  DELETE_COIN,
+  DELETE_USER,
+  UPDATE_COIN_PRICE,
+} from '../actions/types';
 
 const initialState = {
- users:[],
-
+  users: [],
 };
 
 export default function (state = initialState, action) {
@@ -16,22 +18,29 @@ export default function (state = initialState, action) {
         users: action.payload,
       };
     case POST_COIN:
-       state.users.coins=action.payload
-        return {
-          ...state,          
-        };
-    case DELETE_COIN:
-      state.users.coins=action.payload
-          return {
-           ...state,          
-           };
-    case DELETE_USER:  
-    return {
-      ...state,
-      users:action.payload          
+      state.users.coins = action.payload;
+      return {
+        ...state,
       };
+    case DELETE_COIN:
+      const result=state.users.coins.filter(e=>action.payload!==e._id)
+      state.users.coins=result
+      return {
+        ...state
+      };
+
+    case UPDATE_COIN_PRICE:
+      return {
+        ...state,
+        cryptoprice: action.payload,
+      };
+    case DELETE_USER:
+      return {
+        ...state,
+        users: action.payload,
+      };
+
     default:
       return state;
   }
 }
-

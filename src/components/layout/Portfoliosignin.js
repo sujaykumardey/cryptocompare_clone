@@ -2,16 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Portfoliosignin.css';
 import NavbarCompo from './Navbarcompo';
-
+import Totalrevenue from './Totalrevenue';
 import Footer from './footer';
 import Coincards from './coincards';
 import { addCoinWallet } from '../../actions/postActions';
 import { Redirect } from 'react-router-dom';
-import { w3cwebsocket as W3CWebSocket } from 'websocket';
-import { api_websocket } from '../../assets/credentials';
-const client = new W3CWebSocket(
-  `wss://streamer.cryptocompare.com/v2?api_key=${api_websocket}`
-);
 
 class Portfoliosignin extends Component {
   constructor(props) {
@@ -20,62 +15,78 @@ class Portfoliosignin extends Component {
       coin: null,
       price: null,
       token: null,
-      username:null,
+      username: null,
+      result: null,
+      coinprice: null,
+      text:'',
+      suggetions:[],
+      coindropdown:null,
+      exchange:[],
+      
     };
   }
 
   handleCoin = (e) => {
     e.preventDefault();
     const data = {
-      coin: this.state.coin,
-      price: this.state.price,
+      coin: this.state.text,
+      price: this.state.price,      
     };
     this.props.addCoinWallet(data, this.props.token);
+    
   };
 
- 
-
   componentDidMount() {
-    this.setState({username:this.props.name})
-    client.onopen = () => {
-      console.log('WebSocket Client Connected');
-    };
-    client.onopen = () => {
-      var subRequest = {
-        action: 'SubAdd',
-        subs: ['5~CCCAGG~BTC~USD'],
-      };
-      client.send(JSON.stringify(subRequest));
-
-      client.onmessage = (event) => {
-        let message = JSON.parse(event.data);
-        this.setState((prevState) => {
-          if (message.PRICE === undefined) {
-            this.setState({ coin_price: prevState.coin_price });
-          } else {
-            this.setState({ coin_price: message.PRICE });
-          }
-        });
-      };
-    };
+    this.setState({coindropdown:this.props.icon.map(e=>[e.CoinInfo.ImageUrl,e.CoinInfo.Name])})
+    
+    this.setState({result:this.props.coin.reduce((a,e)=>{
+      return a+e.price
+    },0)})
+    
+    
   }
 
-  render() {
-    if(this.state.token===undefined) return <Redirect to='/' />;
-    const result =
-      this.props.coin === undefined
-        ? null
-        : this.props.coin.reduce((e = 0, a) => {
-            console.log(e, a.price);
-            return e + a.price;
-          }, 0);
+suggetionsSelected=(value)=>{
+  
+     this.setState({ text:value,
+      suggetions:[]})     
+   
+}
 
+
+onTextChange=(e)=>{
+    const value=e.target.value;
+    let suggetions=[];
+    if(value.length >0){
+    const regex=new RegExp(`^${value}`,'i');
+    suggetions=this.state.coindropdown.sort().filter(v=>regex.test(v[1]));
+    }
+    this.setState({suggetions,text:value});
+}
+
+
+renderSuggetions=()=>{
+  const {suggetions}=this.state;
+  if(suggetions.length===0){
+    return null;
+  }
+  return (
+    <ul>
+      {suggetions.map((item)=><li onClick={()=>this.suggetionsSelected(item[1])}><img style={{height:"25px",width:"25px",marginRight:"10px"}} src={`https://www.cryptocompare.com/${item[0]}`} />{item[1]}</li>)}
+    </ul>
+  )
+
+}
+
+
+  render() {
+
+    
+    if (this.state.token === undefined) return <Redirect to="/" />;
     return (
       <div className="main-container">
-        <NavbarCompo name={this.state.username} />
+        <NavbarCompo name={this.props.name} />
         <div className="container-body">
-          
-
           <div className="container-portfolio">
             <div className="header-portfolio">
               <h1 className="portfolios">
@@ -94,6 +105,7 @@ class Portfoliosignin extends Component {
                 Portfolio Currency
                 <span className="dropdown">
                   <a
+                    href="as"
                     className="dropdown-toggle"
                     type="button"
                     id="dropdownMenu2"
@@ -130,63 +142,12 @@ class Portfoliosignin extends Component {
                 </button>
               </div>
             </div>
-            <div className="cardlist d-flex justify-content-end">
-              <div
-                class="card border-dark mb-0"
-                style={{ width: '10rem', maxHeight: '7rem' }}
-              >
-                <div class="card-header">Total</div>
-                <div class="card-body text-dark">
-                  <h7 class="card-body">{result}$</h7>
-                  <p class="card-text"></p>
-                </div>
-              </div>
 
-              <div
-                class="card border-dark mb-0"
-                style={{ width: '9rem', maxHeight: '7rem' }}
-              >
-                <div class="card-header">Realized P/L</div>
-                <div class="card-body text-dark">
-                  <h7 class="card-body">{this.state.coin_price}</h7>
-                  <p class="card-text"></p>
-                </div>
-              </div>
-
-              <div
-                class="card border-dark mb-0"
-                style={{ width: '12rem', maxHeight: '7rem' }}
-              >
-                <div class="card-header">Profit / Loss</div>
-                <div class="card-body text-dark">
-                  <h7 class="card-body">{this.state.coin_price}</h7>
-                  <p class="card-text"></p>
-                </div>
-              </div>
-
-              <div
-                class="card border-dark mb-0"
-                style={{ width: '7rem', maxHeight: '7rem' }}
-              >
-                <div class="card-header">Holdings</div>
-                <div class="card-body text-dark">
-                  <h7 class="card-body">{this.state.coin_price}</h7>
-                  <p class="card-text"></p>
-                </div>
-              </div>
-
-              <div class="card border-dark mb-0" style={{ width: '12rem' }}>
-                <div class="card-header">24H Profit / Loss</div>
-                <div class="card-body text-dark">
-                  <h7 class="card-body">{this.state.coin_price}</h7>
-                  <p class="card-text"></p>
-                </div>
-              </div>
-            </div>
+           {this.state.result!==null ?<Totalrevenue result={this.state.result} coin={this.props.topten} /> :null}
 
             <Coincards
               coin={this.props.coin}
-              price={this.state.coin_price}
+              price={this.props.topten}
               token={this.props.token}
             />
             <div className="button-coin-end d-flex justify-content-end">
@@ -212,7 +173,10 @@ class Portfoliosignin extends Component {
           aria-labelledby="myModalLabel"
           aria-hidden="true"
         >
-          <div className="modal-dialog modal-notify modal-warning" role="document">
+          <div
+            className="modal-dialog modal-notify modal-warning"
+            role="document"
+          >
             <div className="modal-content">
               <div className="modal-header text-center">
                 <h4 className="modal-title white-text w-100 font-weight-bold py-2">
@@ -236,18 +200,26 @@ class Portfoliosignin extends Component {
                   <input
                     type="text"
                     id="modalLRInput10"
-                    value={this.state.coin}
-                    onChange={(e) => this.setState({ coin: e.target.value })}
+                    // value={this.state.coin}
+                    // onChange={(e) => this.setState({ coin: e.target.value })}
+                    onChange={this.onTextChange}
+                    value={this.state.text}
                     className="form-control validate"
                     autoComplete="off"
                     required
                   />
-                  <label className="text" data-error="wrong" data-success="right" for="form3">
-                  <span className="content-name">Coin</span>
+                  {this.renderSuggetions()}
+                  <label
+                    className="text"
+                    data-error="wrong"
+                    data-success="right"
+                    for="form3"
+                  >
+                    <span className="content-name">Coin</span>
                   </label>
                 </div>
                 <div className="md-form">
-                <i className="fas fa-dollar-sign prefix white-text"></i>
+                  <i className="fas fa-dollar-sign prefix white-text"></i>
                   <input
                     type="text"
                     id="modalLRInput10"
@@ -257,15 +229,20 @@ class Portfoliosignin extends Component {
                     autoComplete="off"
                     required
                   />
-                  <label className="text" data-error="wrong" data-success="right" for="form2">
+                  <label
+                    className="text"
+                    data-error="wrong"
+                    data-success="right"
+                    for="form2"
+                  >
                     <span className="content-name">Amount</span>
                   </label>
                 </div>
-                
               </div>
 
               <div className="modal-footer justify-content-center">
                 <a
+                  href="sd"
                   type="button"
                   className="btn btn-outline-warning waves-effect"
                   onClick={(e) => this.handleCoin(e)}
@@ -277,7 +254,7 @@ class Portfoliosignin extends Component {
           </div>
         </div>
 
-        <Footer />
+        
       </div>
     );
   }
@@ -287,6 +264,8 @@ const mapStateToProps = (state) => ({
   coin: state.crypto.users.coins,
   name: state.crypto.users.name,
   token: state.crypto.users.token,
+  icon:state.cryptos.topTenCrypto,
+  topten:state.cryptos.tencoin.BTC.USD
 });
 
 export default connect(mapStateToProps, {
