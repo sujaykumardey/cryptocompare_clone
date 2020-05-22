@@ -1,4 +1,4 @@
-import {  FETCH_CRYPTO,FETCH_ALLCRYPTO,FETCH_FORUM} from '../actions/types';
+import {  FETCH_CRYPTO,FETCH_ALLCRYPTO,FETCH_FORUM,FETCH_TEN_COIN} from '../actions/types';
 
 const initialState = {
   topTenCrypto:[],
@@ -23,6 +23,11 @@ export default function (state = initialState, action) {
             ...state,
             forum:action.payload
          }
+         case FETCH_TEN_COIN:
+          return{
+             ...state,
+             tencoin:action.payload
+          }
        default:
       return state;
   }

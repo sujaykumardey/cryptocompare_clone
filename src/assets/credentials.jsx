@@ -1,5 +1,5 @@
 const api = 'https://teamdenver-backend.herokuapp.com';
-export const api_websocket='5a640b5b357ce0a3d202c548571941fad670dd34b3014bcdff08c29c7ce6f7b6';
+export const api_websocket='1b1c18cf8627fe665b46c359056aff337563e7213c518a5e75edaa6fa57b998a';
 
 
 export const registrationUser = (data) => {

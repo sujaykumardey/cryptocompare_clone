@@ -4,7 +4,7 @@ import CoinListTable from './CoinListTable'
 import Forum from './Forum'
 import News from './News';
 import propsType from 'prop-types'
-import {fetchTopTenCrypto,fetchNews,fetchAllCrypto} from "../actions/coinsActions"
+import {fetchTopTenCrypto,fetchNews,fetchAllCrypto,fetchCoinDetail} from "../actions/coinsActions"
 // import{fetchNews,fetchForum} from "../assets/credentials"
 import {connect} from "react-redux"
 import{Link} from "react-router-dom"
@@ -23,6 +23,7 @@ class CoinList extends Component {
     }
     
     componentDidMount(){
+        this.props.fetchCoinDetail();
         this.props.fetchTopTenCrypto()
        this.props.fetchNews()
         // this.props.fetchAllCrypto()
@@ -203,4 +204,4 @@ CoinList.propsType=({
      forum:state.cryptos.forum
  })
  
- export default connect(mapStatetoProps,{fetchTopTenCrypto,fetchNews,fetchAllCrypto})(CoinList);
+ export default connect(mapStatetoProps,{fetchTopTenCrypto,fetchNews,fetchAllCrypto,fetchCoinDetail})(CoinList);

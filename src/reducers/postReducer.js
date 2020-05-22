@@ -23,9 +23,10 @@ export default function (state = initialState, action) {
         ...state,
       };
     case DELETE_COIN:
-      state.users.coins = action.payload;
+      const result=state.users.coins.filter(e=>action.payload!==e._id)
+      state.users.coins=result
       return {
-        ...state,
+        ...state
       };
 
     case UPDATE_COIN_PRICE:

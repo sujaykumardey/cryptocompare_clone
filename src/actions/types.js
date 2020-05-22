@@ -9,3 +9,4 @@ export const POST_COIN = 'POST_COIN';
 export const DELETE_COIN = 'DELETE_COIN';
 export const DELETE_USER = 'DELETE_USER';
 export const UPDATE_COIN_PRICE = 'UPDATE_COIN_PRICE';
+export const FETCH_TEN_COIN = 'FETCH_TEN_COIN';

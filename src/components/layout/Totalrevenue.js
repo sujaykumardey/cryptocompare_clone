@@ -19,12 +19,13 @@ class Totalrevenue extends Component {
   }
 
   componentWillMount() {
+    
+  }
+
+  componentDidMount() {
     client.onopen = () => {
       console.log('WebSocket Client Connected');
     };
-  }
-
-  componentDidMount(prevState) {
     this.setState({ coinprice: this.props.coin_price });
     console.log('connecting.....');
     this.setState({ username: this.props.name });
@@ -50,17 +51,10 @@ class Totalrevenue extends Component {
         });
       };
 
-      console.log(this.state.coinprice);
+      
     };
 
-    const result =
-      this.props.coin === undefined
-        ? null
-        : this.props.coin.reduce((e = 0, a) => {
-            console.log(e, a.price);
-            return e + a.price;
-          }, 0);
-    this.setState({ result });
+    
   }
 
   render() {
@@ -83,7 +77,7 @@ class Totalrevenue extends Component {
         >
           <div class="card-header">Realized P/L</div>
           <div class="card-body text-dark">
-            <h7 class="card-body">{this.state.coin_price}</h7>
+            <h7 class="card-body">{this.props.coin}</h7>
             <p class="card-text"></p>
           </div>
         </div>
@@ -94,7 +88,7 @@ class Totalrevenue extends Component {
         >
           <div class="card-header">Profit / Loss</div>
           <div class="card-body text-dark">
-            <h7 class="card-body">{this.props.coin_price}</h7>
+            <h7 class="card-body">{this.props.coin}</h7>
             <p class="card-text"></p>
           </div>
         </div>
@@ -105,7 +99,7 @@ class Totalrevenue extends Component {
         >
           <div class="card-header">Holdings</div>
           <div class="card-body text-dark">
-            <h7 class="card-body">{this.props.coin_price}</h7>
+            <h7 class="card-body">{this.props.coin}</h7>
             <p class="card-text"></p>
           </div>
         </div>
@@ -113,7 +107,7 @@ class Totalrevenue extends Component {
         <div class="card border-dark mb-0" style={{ width: '12rem' }}>
           <div class="card-header">24H Profit / Loss</div>
           <div class="card-body text-dark">
-            <h7 class="card-body">{this.props.coin_price}</h7>
+            <h7 class="card-body">{this.props.coin}</h7>
             <p class="card-text"></p>
           </div>
         </div>

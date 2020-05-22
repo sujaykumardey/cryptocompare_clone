@@ -22,8 +22,9 @@ componentDidMount(){
 
 deleteItem=(e)=>{
    e.preventDefault();
-    this.props.onDeleteCoin(e.target.id,this.props.token);
-    console.log('tokentoken',this.props.token,e.target.id)
+    // this.props.onDeleteCoin(e.target.id,this.props.token);
+    this.props.onDeleteCoin(e.target.id);
+    console.log('tokentoken',e.target.id)
 
 }
 
@@ -33,7 +34,7 @@ deleteItem=(e)=>{
         this.props.coin.map(e=>
             <tbody>
             <tr>
-              <th scope="row" id={e._id}className="row-header d-flex justify-content-lg-between">Bitcoin {e.coin} <i class="fas fa-trash" id={e._id} onClick={(e)=>this.deleteItem(e)}></i></th>
+              <th scope="row" id={e._id} className="row-header d-flex justify-content-lg-between">Bitcoin {e.coin} <i class="fas fa-trash" id={e._id} name={e.coin}  onClick={(e)=>this.deleteItem(e)}></i></th>
               <td>$ {e.price}</td>
               <td> <span className="coin_price">${this.props.price}</span></td>
               <td><span className="coin_price">${this.props.price}</span></td>

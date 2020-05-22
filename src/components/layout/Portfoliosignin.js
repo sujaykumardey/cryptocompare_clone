@@ -18,25 +18,70 @@ class Portfoliosignin extends Component {
       username: null,
       result: null,
       coinprice: null,
+      text:'',
+      suggetions:[],
+      coindropdown:null,
+      exchange:[],
+      
     };
   }
 
   handleCoin = (e) => {
     e.preventDefault();
     const data = {
-      coin: this.state.coin,
-      price: this.state.price,
+      coin: this.state.text,
+      price: this.state.price,      
     };
     this.props.addCoinWallet(data, this.props.token);
+    
   };
 
-  componentWillMount() {}
+  componentDidMount() {
+    this.setState({coindropdown:this.props.icon.map(e=>[e.CoinInfo.ImageUrl,e.CoinInfo.Name])})
+    
+    this.setState({result:this.props.coin.reduce((a,e)=>{
+      return a+e.price
+    },0)})
+    
+    
+  }
 
-  // componentDidMount() {
-  //   this.setState({ coinprice: this.props.coin_price });
-  // }
+suggetionsSelected=(value)=>{
+  
+     this.setState({ text:value,
+      suggetions:[]})     
+   
+}
+
+
+onTextChange=(e)=>{
+    const value=e.target.value;
+    let suggetions=[];
+    if(value.length >0){
+    const regex=new RegExp(`^${value}`,'i');
+    suggetions=this.state.coindropdown.sort().filter(v=>regex.test(v[1]));
+    }
+    this.setState({suggetions,text:value});
+}
+
+
+renderSuggetions=()=>{
+  const {suggetions}=this.state;
+  if(suggetions.length===0){
+    return null;
+  }
+  return (
+    <ul>
+      {suggetions.map((item)=><li onClick={()=>this.suggetionsSelected(item[1])}><img style={{height:"25px",width:"25px",marginRight:"10px"}} src={`https://www.cryptocompare.com/${item[0]}`} />{item[1]}</li>)}
+    </ul>
+  )
+
+}
+
 
   render() {
+
+    
     if (this.state.token === undefined) return <Redirect to="/" />;
     return (
       <div className="main-container">
@@ -98,11 +143,11 @@ class Portfoliosignin extends Component {
               </div>
             </div>
 
-            <Totalrevenue result={this.state.result} />
+           {this.state.result!==null ?<Totalrevenue result={this.state.result} coin={this.props.topten} /> :null}
 
             <Coincards
               coin={this.props.coin}
-              price={this.state.coin_price}
+              price={this.props.topten}
               token={this.props.token}
             />
             <div className="button-coin-end d-flex justify-content-end">
@@ -155,12 +200,15 @@ class Portfoliosignin extends Component {
                   <input
                     type="text"
                     id="modalLRInput10"
-                    value={this.state.coin}
-                    onChange={(e) => this.setState({ coin: e.target.value })}
+                    // value={this.state.coin}
+                    // onChange={(e) => this.setState({ coin: e.target.value })}
+                    onChange={this.onTextChange}
+                    value={this.state.text}
                     className="form-control validate"
                     autoComplete="off"
                     required
                   />
+                  {this.renderSuggetions()}
                   <label
                     className="text"
                     data-error="wrong"
@@ -206,7 +254,7 @@ class Portfoliosignin extends Component {
           </div>
         </div>
 
-        <Footer />
+        
       </div>
     );
   }
@@ -216,6 +264,8 @@ const mapStateToProps = (state) => ({
   coin: state.crypto.users.coins,
   name: state.crypto.users.name,
   token: state.crypto.users.token,
+  icon:state.cryptos.topTenCrypto,
+  topten:state.cryptos.tencoin.BTC.USD
 });
 
 export default connect(mapStateToProps, {

@@ -40,12 +40,11 @@ export const addCoinWallet = (data, token) => (dispatch) => {
   });
 };
 
-export const onDeleteCoin = (id, token) => (dispatch) => {
-  deleteCoin(id, token).then((coin) => {
-    dispatch({
+export const onDeleteCoin = (id) => (dispatch) => {
+  dispatch({
       type: DELETE_COIN,
-      payload: coin,
-    });
+      payload: id,
+  
   });
 };
 
