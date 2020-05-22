@@ -80,12 +80,12 @@ class CoinName extends Component {
    * This function establishes the connect with the websocket and also ensures constant reconnection if connection closes
    */
   connect = () => {
-    // var apiKey = "19f6ab549381046870ae7932ef6224e1e11266bd4dad353ef9a8abc930da70f6";
+    var apiKey = "19f6ab549381046870ae7932ef6224e1e11266bd4dad353ef9a8abc930da70f6";
     var apiKey1 =
       'eec68ff1508c800d201f19741c1a920f4e1fe97510f96090818c3ce2e5f4e61f'
 
     var ws = new WebSocket(
-      'wss://streamer.cryptocompare.com/v2?api_key=' + apiKey1
+      'wss://streamer.cryptocompare.com/v2?api_key=' + apiKey
     )
     let that = this // cache the this
     var connectInterval

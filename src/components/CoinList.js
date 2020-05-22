@@ -45,7 +45,14 @@ class CoinList extends Component {
         //  * This function establishes the connect with the websocket and also ensures constant reconnection if connection closes
         //  *
         connect = () => {
-            var ws = new WebSocket('wss://streamer.cryptocompare.com/v2?api_key=be0c6c7da1dfcc09d10b8818d43457b3d83b8cdf8c85d482072715a0e7043bd9');
+            var apiKey = "19f6ab549381046870ae7932ef6224e1e11266bd4dad353ef9a8abc930da70f6";
+            var apiKey1 =
+      'be0c6c7da1dfcc09d10b8818d43457b3d83b8cdf8c85d482072715a0e7043bd9'
+
+    var ws = new WebSocket(
+      'wss://streamer.cryptocompare.com/v2?api_key=' + apiKey1
+    )
+            // var ws = new WebSocket('wss://streamer.cryptocompare.com/v2?api_key=be0c6c7da1dfcc09d10b8818d43457b3d83b8cdf8c85d482072715a0e7043bd9');
             let that = this; // cache the this
             var connectInterval;    // websocket onopen event listener
             ws.onopen = () => {
@@ -93,7 +100,7 @@ class CoinList extends Component {
                 console.log(message.TYPE,message)
                 let coinExist=false;
                 const prevData=this.state.data.map(coin=>{
-                    console.log(coin)
+                    // console.log(coin)
                     if(message.TYPE==="5"&&coin.sym===message.FROMSYMBOL&&message.PRICE!==undefined)
                     {   if(coin.price<message.PRICE)
                            { coin.priceClr="#A11B0A"
