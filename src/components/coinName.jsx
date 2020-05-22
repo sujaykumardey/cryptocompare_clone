@@ -6,7 +6,7 @@ const CoinMarketDetail = props => {
   const getVolume = message => {
     let volume = message.VOLUME24HOURTO / 1000000
     let bitcoinVol = message.VOLUME24HOURTO / message.PRICE / 1000
-    // console.log('ssssssssssssss', bitcoinVol)
+    
     return (
       <div className='coin-market-border px-1'>
         Ƀ {bitcoinVol.toFixed(2)}k ($ {volume.toFixed(2)} M)
@@ -40,14 +40,18 @@ const CoinMarketDetail = props => {
         <div className='coin-market-border px-1'>$ 8472.96-$ 8472.96</div>
       </div>
       <div className='pr-2'>
-        <div className='badge text-secondary'>
+        <div className='badge text-secondary coin-market-rating-div'>
           Weiss Rating
           <i
-            class='fa fa-info-circle'
-            data-toggle='tooltip'
-            data-placement='bottom'
-            title={`${tooltipRatingTitle}`}
-          ></i>
+            class='fa fa-info-circle coin-market-info'
+            
+          >
+              <div className='tooltip-content'>
+          
+          {`${tooltipRatingTitle}`}
+          </div>
+          </i>
+          
         </div>
         <div className='text-center coin-market-border'>A-</div>
       </div>
