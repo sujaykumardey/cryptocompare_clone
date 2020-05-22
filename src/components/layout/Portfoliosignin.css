@@ -1,0 +1,155 @@
+.container-body {
+  background-color: rgb(223, 221, 221);
+}
+
+.advertise {
+  margin-top: 75px;
+  text-align: center;
+}
+
+.container-portfolio {
+  background-color: white;
+  margin: 0 100px 0 100px;
+}
+
+.container-emptyportfolio {
+  margin: 0 50px 0 50px;
+}
+
+.header-portfolio {
+  padding: 20px 0 20px 5px;
+  border-bottom: 2px solid #ebeae8;
+}
+.portfolios {
+  font-size: 20px;
+}
+.portfolios.fa-bar-chart {
+  color: rgb(22, 247, 60);
+  padding: 5px;
+  border: 0.5px solid rgb(233, 228, 228);
+}
+
+.demo-image {
+  width: 95%;
+}
+.emptyportfolio-body {
+  margin: 0 150px 0 150px;
+}
+
+.emptyporfolio-footer {
+  text-align: center;
+}
+
+.emptyportfolio-body {
+  padding-bottom: 20px;
+}
+
+.empty-item {
+  padding: 10px;
+  border-bottom: 2px solid #ebeae8;
+}
+
+.empties {
+  border: 8px solid #ebeae8;
+  border-radius: 5px;
+}
+
+.be-brave {
+  font-size: 20px;
+  padding: 10px 0 10px 0;
+}
+
+.btn {
+  margin-bottom: 10px;
+}
+
+.portfolios-user {
+  font-size: 16px;
+  padding: 15px 0 15px 5px;
+  border-bottom: 1px solid rgb(202, 197, 197);
+}
+.fa-lock {
+  margin-left: 5px;
+}
+.header-portfolio-user {
+  background-color: #ebf7f7;
+}
+
+.portfolios-user-add-coin {
+  font-size: 15px;
+  color: blue;
+  padding: 20px 20px 20px 0px;
+}
+.drop-down {
+  margin-left: 10px;
+}
+.header-portfolio-add-coin {
+  background-color: #65e9e9;
+}
+
+.add-coin-btn {
+  margin: 20px 10px 20px 0;
+}
+
+/* .dropdown-toggle {
+  color: black;
+} */
+.card {
+  margin: 5px 20px 5px 0;
+}
+
+.card-header {
+  text-align: end;
+  padding: 5px;
+  font-size: 14px;
+  background-color: #9ceeee;
+}
+.card-body {
+  padding: 5px;
+  text-align: center;
+}
+
+.table {
+  margin: 10px 30px 20px 10px;
+}
+thead {
+  background-color: #9ceeee;
+}
+
+.button-coin-end {
+  margin-right: 10px;
+}
+
+.fa-plus {
+  font-size: 12px;
+  margin-right: 3px;
+}
+.modal-header {
+  background-color: orange;
+  text-align: left;
+  height: 60px;
+}
+
+.modal-body {
+  background: rgb(206, 207, 207);
+}
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-portfolio {
+  height: 300px;
+}
+
+.modal-footer {
+  background: white;
+}
+
+.white-text {
+  font-size: 20px;
+}
+.md-form{
+  width: 100%;
+  
+}

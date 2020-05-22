@@ -1,2 +1,12 @@
-export const FETCH_POSTS = 'FETCH_POSTS';
+export const FETCH_CRYPTO = 'FETCH_CRYPTO';
+export const FETCH_ALLCRYPTO = 'FETCH_ALLCRYPTO';
+export const FETCH_FORUM = 'FETCH_FORUM';
+export const FETCH_NEWS = 'FETCH_NEWS';
+export const FETCH_HISTORICAL_DATA_DAY = 'FETCH_HISTORICAL_DATA_DAY';
 
+export const FETCH_USER = 'FETCH_POSTS';
+export const POST_COIN = 'POST_COIN';
+export const DELETE_COIN = 'DELETE_COIN';
+export const DELETE_USER = 'DELETE_USER';
+export const UPDATE_COIN_PRICE = 'UPDATE_COIN_PRICE';
+export const FETCH_TEN_COIN = 'FETCH_TEN_COIN';

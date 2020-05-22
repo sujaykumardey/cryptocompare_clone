@@ -1,0 +1,70 @@
+.container-body{
+    background-color: rgb(223, 221, 221);
+    
+}
+
+.advertise{
+    margin-top: 75px;
+    text-align: center;
+
+}
+
+.container-portfolio{
+        background-color: white;
+        margin:0 100px 0 100px;
+    
+
+}
+
+.container-emptyportfolio{
+    margin:0 50px 0 50px;
+    
+}
+
+.header-portfolio{
+    padding: 10px;
+    border-bottom:2px solid #ebeae8;
+    
+}
+.portfolios{
+    font-size: 20px;    
+}
+.fa-bar-chart{
+    color: rgb(22, 247, 60);
+    padding: 5px;
+    border:1px solid;
+}
+
+.demo-image{
+    width:95%;
+}
+.emptyportfolio-body{
+    margin:0 150px 0 150px;
+}
+
+.emptyporfolio-footer{
+    text-align: center;
+}
+
+.emptyportfolio-body{
+    padding-bottom: 20px;
+}
+
+.empty-item{
+    padding:10px;
+    border-bottom:5px solid #ebeae8 ;
+}
+
+.empties{
+    border:8px solid #ebeae8 ;
+    border-radius: 5px;
+}
+
+.be-brave{
+    font-size: 20px;
+    padding:10px 0 10px 0;
+}
+
+.btn{
+    margin-bottom:10px;
+}

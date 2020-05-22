@@ -1,18 +1,22 @@
-.modal-body {
-  background-color: #0b1738;
+.modal-body{
+    background-color:rgb(206, 207, 207);
+    height: 400px;
+    
 }
 
-.text {
-  color: rgb(18, 247, 18);
-  font-weight: 900;
+.text{
+    color:rgb(7, 7, 7);
+    font-weight: 900;
 }
 
-.prefix {
-  color: honeydew;
-  margin-right: 5px;
+.prefix{
+    color: honeydew;
+    margin-right: 5px;
 }
 
-.btn-outline-info {
-  font-size: 20px;
-  border: none;
+
+.btn-outline-info{
+    font-size: 20px;
+    border: none;
 }
+
