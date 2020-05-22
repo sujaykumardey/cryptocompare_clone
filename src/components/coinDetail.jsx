@@ -6,7 +6,7 @@ class CoinDetail extends Component {
       <div className='border-gray coin-properties-container'>
         <div className=' coin-detail-heading'>DETAILS</div>
         <div className='p-1'>
-          <table class='table table-bordered table-sm'>
+          <table class='table table-bordered pr-4 table-sm'>
             <thead>
               <tr className='table-heading'>
                 <th scope='col'>Max Supply</th>
@@ -16,7 +16,7 @@ class CoinDetail extends Component {
 
                 <th scope='col'>Twitter</th>
 
-                <th scope='col'>Website</th>
+                {/* <th scope='col'>Website</th> */}
               </tr>
             </thead>
             <tbody>
@@ -44,10 +44,10 @@ class CoinDetail extends Component {
                   <div className='font-weight-bold'>Current Supply</div>
                 </td>
 
-                <td>
+                {/* <td>
                   <a href='https://bitcoin.org/en/'>Bitcoin</a>{' '}
                   <div className='font-weight-bold'>Block Reward</div>
-                </td>
+                </td> */}
               </tr>
               {/* Row-2 */}
               <tr className='table-row'>
@@ -56,7 +56,7 @@ class CoinDetail extends Component {
                 <td>630,416.0</td>
                 <td>115,284,461,532.5</td>
                 <td>18,377,600.0</td>
-                <td>6.3</td>
+                
               </tr>
             </tbody>
           </table>

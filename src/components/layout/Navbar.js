@@ -98,13 +98,13 @@ handleModal = (e) => {
             </button>
             <div className="collapse navbar-collapse" id="exCollapsingNavbar">
               <ul className="nav navbar-nav">
-                <Link to="/">
+                {/* <Link to="/"> */}
                   <li className="nav-item">
-                    <a href="#!" className="nav-link">
+                    <a href="/" className="nav-link">
                       Markets
                     </a>
                   </li>
-                </Link>
+                {/* </Link> */}
                 <li className="nav-item">
                   <a href="#!" className="nav-link">
                     Data

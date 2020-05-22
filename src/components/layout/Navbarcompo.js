@@ -117,9 +117,9 @@ class NavbarCompo extends Component {
                     </li>
                     <li className="divider"></li>
                     <li>
-                      <Link to="/" onClick={(e) => this.handleLogout(e)}>
+                      <a href="/" onClick={(e) => this.handleLogout(e)}>
                         <i className="fa fa-sign-out"></i> Logout
-                      </Link>
+                      </a>
                     </li>
                   </ul>
                 </li>

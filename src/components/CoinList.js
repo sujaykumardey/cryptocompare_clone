@@ -27,7 +27,7 @@ class CoinList extends Component {
         }
     }
     componentDidMount(){
-        // this.props.fetchAllCrypto()
+        this.props.fetchAllCrypto()
         this.props.fetchCoinDetail();
         // this.props.fetchTopTenCrypto()
        this.props.fetchNews()
@@ -45,9 +45,9 @@ class CoinList extends Component {
         //  * This function establishes the connect with the websocket and also ensures constant reconnection if connection closes
         //  *
         connect = () => {
-            var apiKey = "19f6ab549381046870ae7932ef6224e1e11266bd4dad353ef9a8abc930da70f6";
+            var apiKey = "0aaba98baaec7fdf3078704400d3533b700ded16fa81a3d7f1c019106db3aebc";
             var apiKey1 =
-      'be0c6c7da1dfcc09d10b8818d43457b3d83b8cdf8c85d482072715a0e7043bd9'
+      '39384a547eab1c6790c330f4c0ab9403cb9f98c2c5ab3b5ac5b47fe4d6f54dc1'
 
     var ws = new WebSocket(
       'wss://streamer.cryptocompare.com/v2?api_key=' + apiKey1
@@ -169,7 +169,7 @@ class CoinList extends Component {
         console.log(this.state,"BTC DATA")
     return(
         <div className="coin-list">
-            <CoinListCards/>
+            {/* <CoinListCards/> */}
             <div className="coin-list-table">
               <div className="coinTable-header">
                <div className="coinTable-header-nav"
@@ -190,11 +190,11 @@ class CoinList extends Component {
             <div>
             <CoinListTable data={this.state.data} coinInfo={this.props.topTenCrypto} />
             <div className="coinlist-table-footer">
-            <Link to="/coins/list/USD/1">
-            <button className="view-all-coins-btn">
+            {/* <Link to="/coins/list/USD/1"> */}
+            <a href='/coins/list/USD/1'className="view-all-coins-btn">
                 View All Coins <i className="fa fa-chevron-down"></i>
-            </button>
-            </Link>
+            </a>
+            {/* </Link> */}
             </div>
             </div>}
             {/* {this.state.showCoins==="1"&&

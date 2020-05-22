@@ -10,7 +10,7 @@ class CoinListCards extends Component {
     }
     componentDidMount(){
         this.connect();
-        this.getGraphData()
+        // this.getGraphData()
         console.log(this.connect,"connect return")
         }
         timeout = 250; // Initial timeout duration as a class variable/**
@@ -18,7 +18,7 @@ class CoinListCards extends Component {
         //  * This function establishes the connect with the websocket and also ensures constant reconnection if connection closes
         //  */
         connect = () => {
-            var ws = new WebSocket('wss://streamer.cryptocompare.com/v2?api_key=be0c6c7da1dfcc09d10b8818d43457b3d83b8cdf8c85d482072715a0e7043bd9');
+            var ws = new WebSocket('wss://streamer.cryptocompare.com/v2?api_key=0aaba98baaec7fdf3078704400d3533b700ded16fa81a3d7f1c019106db3aebc');
             let that = this; // cache the this
             var connectInterval;    // websocket onopen event listener
             ws.onopen = () => {

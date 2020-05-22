@@ -19,7 +19,14 @@ class AllCoinsList extends Component {
         //  * This function establishes the connect with the websocket and also ensures constant reconnection if connection closes
         //  *
         connect = () => {
-            var ws = new WebSocket('wss://streamer.cryptocompare.com/v2?api_key=be0c6c7da1dfcc09d10b8818d43457b3d83b8cdf8c85d482072715a0e7043bd9');
+            var apiKey = "19f6ab549381046870ae7932ef6224e1e11266bd4dad353ef9a8abc930da70f6";
+            var apiKey1 =
+      '39384a547eab1c6790c330f4c0ab9403cb9f98c2c5ab3b5ac5b47fe4d6f54dc1'
+
+    var ws = new WebSocket(
+      'wss://streamer.cryptocompare.com/v2?api_key=' + apiKey1
+    )
+            // var ws = new WebSocket('wss://streamer.cryptocompare.com/v2?api_key=be0c6c7da1dfcc09d10b8818d43457b3d83b8cdf8c85d482072715a0e7043bd9');
             let that = this; // cache the this
             var connectInterval;    // websocket onopen event listener
             ws.onopen = () => {
@@ -59,7 +66,7 @@ class AllCoinsList extends Component {
                     else if(message.TYPE==="21"&&coin.sym===message.SYMBOL&&message.TOPTIERFULLVOLUME!==undefined)
                          coin.topTierVol=message.TOPTIERFULLVOLUME
                     else if(message.TYPE==="11"&&coin.sym===message.SYMBOL&&message.FULLVOLUME!==undefined)
-                         coin.topTierVol=message.FULLVOLUME
+                         coin.vol=message.FULLVOLUME
                     return coin
                  })  
                  if(!coinExist&&message.TYPE==="5"&&message.PRICE!==undefined)

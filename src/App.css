@@ -63,7 +63,13 @@
     margin-top: 60px;
   }
   .coin-list-table{
-    background-color:var(--card-table-background-clr)
+    background-color:var(--card-table-background-clr);
+    /* padding-top: .4em; */
+
+  }
+  .coin-list{
+      margin-top:40px;
+      padding-top: 40px;
   }
   .dollar{
     /* font-size: 14px;  */
@@ -462,3 +468,7 @@
   padding: 1em 1em 1em 1em;
   border-radius: 4px;
 }
+.coin-properties-container{
+    padding-right:10px;
+}
+
